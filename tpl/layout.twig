@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% block desc %}            
+    {% endblock %}
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,600i,700,700i,800,800i|Roboto:300,300i,400,400i,500,500i,700,700i&amp;subset=cyrillic,cyrillic-ext,latin-ext" rel="stylesheet">      <link rel="stylesheet" href="/assets/css/common.css">
+    <link rel="icon" type="image/png" href="/assets/img/logo.png" />     
+</head>
+<body>
+    <div class="container expanded">
+        <div class="nav-bar">
+            <a href="/" class="row align-center menu">
+                <img src="/assets/img/menu.svg" width="36" height="36">                
+            </a> 
+
+            <ul class="menu-links" data-show="hide">
+                <li><a href="/обучение/">Обучение</a></li>
+                <li><a href="/тесты/">Тесты</a></li>
+                <li><a href="/тренажер/">Тренажеры</a></li>
+                <li><a href="/статьи/">Статьи</a></li>
+            </ul>
+
+            <a href="/" class="row align-center">
+                <img class="logo" src="/assets/img/logo.svg" width="36" height="36"> 
+                <span class="title">Сольфеджио.онлайн</span>
+            </a>
+
+            <div class="nav-bar__menu"> 
+                <a href="/обучение/">Обучение</a>
+                <a href="/тесты/">Тесты</a>
+                <a href="/тренажер/">Тренажеры</a>
+                <a href="/статьи/">Статьи</a>
+            </div> 
+
+        </div>
+
+        <div class="main">            
+            {% block content %}            
+            {% endblock %}
+        </div>        
+    </div>
+    
+    <div class="footer column compressed">
+        <div class="container align-center row wrap">
+            <b>Сольфеджио.онлайн</b> <span class="left-offset">По вопросам работы сайта:&nbsp;<a href="mailto:solfeggio-online@mail.ru">solfeggio-online@mail.ru</span></a>
+        </div>    
+    </div>
+
+    {% block scripts %}            
+    {% endblock %}
+</body>
+</html>

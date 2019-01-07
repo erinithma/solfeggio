@@ -1,0 +1,89 @@
+.button{
+    height: 28px;
+    font-size: 16px;
+    padding-bottom: 2px;
+    @media (max-width: (@sm-width - 1)){
+        height: 32px;
+        font-size: 22px;
+    }
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 4px;
+    background: linear-gradient(to bottom, @color-default, @color-default-dark);
+    border: 1px solid @color-default-dark;
+    color: black;
+    text-decoration: none !important;
+    outline: none !important;
+    padding-left: 10px;
+    padding-right: 10px;
+    cursor: pointer;
+
+    &:hover{
+        background: linear-gradient(to bottom, @color-default-dark, @color-default);
+    }
+}
+
+.button--primary{
+    background: linear-gradient(to bottom, @color-primary, @color-primary-dark);
+    border: 1px solid @color-primary-dark;
+    color: white;
+
+    &:hover{
+        color: white;
+        background: linear-gradient(to bottom, @color-primary-dark, @color-primary);
+    }
+}
+
+.button--success{
+    background: linear-gradient(to bottom, @color-success, @color-success-dark);
+    border: 1px solid @color-success-dark;
+    color: white;
+
+    &:hover{
+        color: white;
+        background: linear-gradient(to bottom, @color-success-dark, @color-success);
+    }
+}
+
+.button--danger{
+    background: linear-gradient(to bottom, @color-danger, @color-danger-dark);
+    border: 1px solid @color-danger-dark;
+    color: white;
+
+    &:hover{
+        color: white;
+        background: linear-gradient(to bottom, @color-danger-dark, @color-danger);
+    }
+}
+
+.list{
+    background-color: @color-default;
+    border-radius: 5px;
+    display: inline-block;
+    margin: 0;
+    border: 1px solid @color-default-dark;
+    overflow: hidden;
+
+    a {
+        display: block;
+        padding: 10px;
+        color: black;
+        text-decoration: none;
+
+        &:not(:first-child){
+            border-top: 1px solid @color-default-dark;
+        }
+
+        &:hover{
+            color: @color-primary;
+            text-decoration: none;
+        }
+
+        &.active{
+            background-color: @color-primary;
+            color: white;
+            text-decoration: none;
+        }
+    }
+}

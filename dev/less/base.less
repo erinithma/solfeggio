@@ -1,0 +1,111 @@
+//container
+
+.container{
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+
+    @media (min-width: @sm-width){
+        width: @cont-sm-width;
+    }
+
+    @media (min-width: @md-width){
+        width: @cont-md-width;
+    }
+
+    @media (min-width: @lg-width){
+        width: @cont-lg-width;
+    }
+
+    @media (min-width: @xl-width){
+        width: @cont-xl-width;
+    }
+}
+
+//row
+
+.row{
+    display: flex;
+    flex-direction: row;
+}
+
+//column
+
+.column{
+    display: flex;
+    flex-direction: column;
+}
+
+.wrap{
+    flex-wrap: wrap;
+}
+
+//align-items
+
+.align-center{
+    align-items: center;
+}
+
+.align-stretch{
+    align-items: stretch;
+}
+
+.align-start{
+    align-items: flex-start;
+}
+
+.align-end{
+    align-items: flex-end;
+}
+
+//justify-items
+
+.justify-center{
+    justify-items: center;
+}
+
+.justify-stretch{
+    justify-items: stretch;
+}
+
+.justify-start{
+    justify-items: start;
+}
+
+.justify-end{
+    justify-items: end;
+}
+
+//grow
+
+.expanded{
+    flex-grow: 1;
+}
+
+.compressed{
+    flex-grow: 0;
+}
+
+//offsets
+
+.left-offset{
+    margin-left: auto;
+}
+
+//white
+
+.white{
+    background-color: white;
+}
+
+//shadow
+
+.shadow(){
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3);
+}
+
+.shadow-h(){
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.3); 
+}

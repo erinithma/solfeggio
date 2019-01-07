@@ -1,0 +1,163 @@
+.piano-wrap{
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  @media (max-width: (@xl-width - 1)) {
+    width: 100%;
+  }
+  @media (max-width: (@xl-width - 1)){
+    margin-left: auto;
+  }
+  
+  margin-right: auto;
+}
+
+.piano, .piano-titles {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-grow: 1;
+}
+
+.piano{
+  .shadow();
+}
+
+.octave, .octave-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-grow: 1;
+  height: 60px;
+
+  @media (max-width: (@lg-width - 1)){
+    height: 40px;
+  }
+
+  @media (max-width: (@md-width - 1)){
+      &:first-child{
+        display: none;
+      }
+      &:last-child{
+        display: none;
+      }
+      height: 60px;
+  }
+
+  @media (max-width: (@sm-width - 1)){
+    &:nth-child(2){
+      display: none;
+    }
+    &:nth-child(4){
+      display: none;
+    }
+    height: 120px;
+  }
+}
+
+.octave-title {
+  height: 22px;
+  font-size: 14px;
+  align-items: center;
+  justify-content: center;
+}
+
+.octave--current {
+  box-shadow: 0 0 2px 2px rgba(0, 0, 255, 0.3);
+  z-index: 1;
+}
+
+.level {
+  position: relative;
+  
+  flex-grow: 1;
+}
+
+.key {
+  cursor: pointer;
+  border-radius: 0 0 2px 2px;
+}
+
+.black.key {
+  background-color: #777;
+  border-bottom: 1px solid black;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  position: absolute;
+  left: 50%;
+  width: 60%;
+  margin-left: 20%;
+  top: 0;
+  z-index: 1;
+  height: 65%;
+}
+
+.black.key:hover {
+  background-color: #666;
+}
+
+.black.key.active {
+  background-color: #999;
+}
+
+.white.key {
+  background-color: white;
+  border-bottom: 1px solid black;
+  border-left: 1px solid #777;
+  border-right: 1px solid black;
+  background-size: 100%;
+  height: 100%;
+  width: 100%;
+}
+
+.white.key:hover {
+  background-color: #eee;
+}
+
+.white.key.active {
+  background-color: #ccc;
+}
+
+.white.key.down{
+  height: 98%;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.black.key.down{
+  height: 63%;
+}
+
+.piano-controls{
+  flex-grow: 1; 
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
+
+  @media (min-width: @md-width){
+    display: none;
+  }
+}
+
+#mode{
+  position: relative;
+}
+
+.piano-list{
+  position: absolute;
+  top: 20px;
+  right: 0;
+  width: 180px;
+  .shadow();
+
+  @media (max-width: @xl-width - 1){
+    top: 110px;
+  }
+
+  @media (max-width: @md-width - 1){
+    top: 150px;
+  }
+
+  @media (max-width: @sm-width - 1){
+    display: none !important;
+  }
+}
