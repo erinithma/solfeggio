@@ -1,4 +1,4 @@
-import { READY, LOAD_SOUND, KEY_DOWN, KEY_UP, MODE_PLAY, MODE_SELECT, MODE_UPDATE } from '../const'
+import { READY, LOAD_SOUND, KEY_DOWN, KEY_UP, MODE_PLAY, MODE_SELECT, MODE_SHOW_RESULT, MODE_HIDE_RESULT } from '../const'
 import {fill} from '../common/helpers';
 
 let resultTimeout = null;
@@ -49,10 +49,10 @@ export default (store) => (next) => (action) => {
                 resultTimeout = null;
             }                
 
-            next({type: MODE_UPDATE});
+            next({type: MODE_SHOW_RESULT});
 
             resultTimeout = setTimeout(() => {
-                next({type: MODE_UPDATE, payload: {show: false}});
+                next({type: MODE_HIDE_RESULT});
             }, 2500);
 
             break;
@@ -67,7 +67,7 @@ export default (store) => (next) => (action) => {
                 resultTimeout = null;
             } 
 
-            next({type: MODE_UPDATE});
+            next({type: MODE_HIDE_RESULT});
 
             break;
 

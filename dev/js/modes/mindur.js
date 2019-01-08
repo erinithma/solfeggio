@@ -1,5 +1,5 @@
 import Mode from './mode';
-import {random} from '../common/helpers';
+import {random, fill} from '../common/helpers';
 
 export default class MinDurMode extends Mode{
     constructor(){
@@ -41,10 +41,17 @@ export default class MinDurMode extends Mode{
     
     getColor(index){
         if(this.result === null){
-            return false;
+            return null;
         }
         else if(this.accord.includes(index)){
             return this.result ? "green" : "red";
+        }
+    }
+
+    getResult(){
+        return {
+            success: this.result,
+            colors: fill().map( (_, i) => this.getColor(i) )
         }
     }
 

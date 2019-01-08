@@ -10,3 +10,5 @@ export const SET_MODE = "SET_MODE";
 export const MODE_SELECT = "MODE_SELECT";
 export const MODE_PLAY = "MODE_PLAY";
 export const MODE_UPDATE = "MODE_UPDATE";
+export const MODE_SHOW_RESULT = "MODE_SHOW_RESULT";
+export const MODE_HIDE_RESULT = "MODE_HIDE_RESULT";

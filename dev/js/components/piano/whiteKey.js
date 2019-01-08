@@ -25,7 +25,7 @@ export default connect(
     {
         pressed: state.sound.get("pressedKeys")[ownProps.index],
         lastTouchIndex: state.sound.get("lastTouchIndex"),
-        color: state.sound.get("showResults") ? state.sound.get("mode").getColor(ownProps.index) : null
+        color: state.sound.get("result") ? state.sound.get("result").colors[ownProps.index] : null
     }),
     (dispatch) => (
     { 

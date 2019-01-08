@@ -15,12 +15,13 @@ import {
     SET_MODE,
     MODE_SELECT,
     MODE_PLAY,
-    MODE_UPDATE 
+    MODE_SHOW_RESULT,
+    MODE_HIDE_RESULT 
     } from '../const';
 
 const Sound = Record({
     mode: new PlayMode(),
-    showResults: true,
+    result: null,
     state: 'empty',
     pressedKeys: fill(),
     currentOctave: 2,
@@ -75,15 +76,11 @@ export default (sound = new Sound(), action) => {
                 .set("mode", payload.mode)
                 .set("showResults", true);
 
-        case MODE_SELECT:
-            return sound.set("showResults", true);
-
-        case MODE_UPDATE:
-            let mode = sound.get("mode");
-            return sound
-                .set("showResults", !payload || payload.show === true)
-                .delete("mode")
-                .set("mode", mode);
+        case MODE_SHOW_RESULT:
+            return sound.set("result", sound.get("mode").getResult());
+        
+        case MODE_HIDE_RESULT:
+            return sound.set("result", null);
 
         default:
             return sound;
