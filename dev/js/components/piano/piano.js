@@ -27,16 +27,12 @@ class Piano extends React.Component{
 
     componentDidMount() {
         this.props.loadSound();
-        //$(window).on("resize", this.eventListener);
-        //this.eventListener();
         $("body").on("mouseup", this.onMouseUp);
         $("body").on("keydown", this.onKeyDown);
         $("body").on("keyup", this.onKeyUp);
     }
 
     componentWillUnmount() {
-        //$(window).off("resize", this.eventListener);
-        //this.eventListener();
         $("body").off("mouseup", this.onMouseUp);
         $("body").off("keydown", this.onKeyDown);
         $("body").off("keyup", this.onKeyUp);
@@ -84,14 +80,6 @@ class Piano extends React.Component{
             this.props.keyUp(noteKey);
         }
     }
-
-    /*eventListener = (e) => {
-       this.setState({size: getSize()});
-    }
-
-    state = {
-        size: 'xl'
-    }*/
 
     display = (i) => {
 
