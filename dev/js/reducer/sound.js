@@ -1,6 +1,6 @@
-import SoundBuffer from '../classes/sound-buffer';
 import { Record } from 'immutable';
-import {getSize} from '../common/helpers';
+import { getSize } from '../common/helpers';
+import PlayMode from '../modes/play';
 
 import { 
     LOAD_SOUND, 
@@ -14,7 +14,7 @@ import {
     } from '../const';
 
 const Sound = new Record({
-    sound: new SoundBuffer(),
+    mode: new PlayMode(),
     state: 'empty',
     pressedKeys: new Array(60).fill(false),
     currentOctave: 2,
@@ -62,7 +62,7 @@ export default (sound = new Sound(), action) => {
             return sound.set("currentOctave", currentOctave <= 0 ? 4 : currentOctave - 1);
 
         case SET_SIZE:
-            return sound.set("size", payload.size);
+            return sound.get("size") !== payload.size ? sound.set("size", payload.size) : sound;
 
         default:
             return sound;

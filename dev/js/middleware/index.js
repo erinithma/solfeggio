@@ -9,7 +9,7 @@ export default (store) => (next) => (action) => {
                 store
                     .getState()
                     .sound
-                    .get("sound")
+                    .get("mode")
                     .loadAll(payload.urls)
                     .addListener(
                         "loaded", 
@@ -24,23 +24,18 @@ export default (store) => (next) => (action) => {
             store
                 .getState()
                 .sound
-                .get("sound")
-                .get(payload.index)
-                .play();
+                .get("mode")
+                .keyDown(payload.index)
 
             next(action);
             
             break;
         case KEY_UP:
-            const sound = 
-                store
-                    .getState()
-                    .sound
-                    .get("sound")
-                    .get(payload.index, true);
-            
-            if(sound)
-                sound.stop();
+            store
+                .getState()
+                .sound
+                .get("mode")
+                .keyUp(payload.index);
 
             next(action);
 
