@@ -20,14 +20,17 @@ const Sound = new Record({
 
 export default (sound = new Sound(), action) => {
     const {type, payload} = action;
+    const currentOctave = sound.get("currentOctave");
 
     switch(type){
         case LOAD_SOUND:
-            return sound.set("state", "loading")
+            return sound.set("state", "loading");
+
         case LOAD_SOUND + READY:
-            return sound.set("state", "loaded");     
+            return sound.set("state", "loaded"); 
+
         case KEY_DOWN:
-            if(payload.fromTouch){
+            if(payload.fromMouse){
                 sound = sound.set("lastTouchIndex", payload.index);
             }
             return sound
@@ -36,22 +39,27 @@ export default (sound = new Sound(), action) => {
                         (i === payload.index) ? true : v
                     )
                 );    
+
         case KEY_UP:
             return sound
                 .update('pressedKeys', (pressedKeys) => 
                     pressedKeys.map( (v, i) => 
                         (i === payload.index) ? false : v
                     )
-                );    
+                );   
+
         case SELECT_OCTAVE:
             return sound
                 .set("currentOctave", payload.index);
+
         case INCREMENT_OCTAVE:
             return sound
-                .set("currentOctave", payload.index > 4 ? 0 : payload.index + 1);
+                .set("currentOctave", currentOctave >= 4 ? 0 : currentOctave + 1);
+
         case DECREMENT_OCTAVE:
             return sound
-                .set("currentOctave", payload.index < 0 ? 4 : payload.index - 1);
+                .set("currentOctave", currentOctave <= 0 ? 4 : currentOctave - 1);
+
         default:
             return sound;
     }

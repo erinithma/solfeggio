@@ -1,19 +1,22 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import {KEY_DOWN, KEY_UP} from '../../const';
+import {detectTouch} from '../../common/helpers';
 
 class WhiteKey extends React.Component{
     render() {
-        return <div className={`key white${this.props.pressed ? ' down' : ''}`} onMouseDown={this.mouseDown} onMouseUp={this.mouseUp}></div>
+        return detectTouch() ? 
+            <div className={`key white${this.props.pressed ? ' down' : ''}`} onTouchStart={this.onDown} onTouchEnd={this.onUp}></div>
+            : 
+            <div className={`key white${this.props.pressed ? ' down' : ''}`} onMouseDown={this.onDown} onMouseUp={this.onUp}></div>
     }
 
-    mouseDown = () => {
+    onDown = () => {
         this.props.down(this.props.index);
     }
 
-    mouseUp = () => {
-        if(this.props.lastTouchIndex !== -1)
-            this.props.up(this.props.lastTouchIndex);
+    onUp = () => {
+        this.props.up(this.props.index);
     }
 }
 
@@ -27,7 +30,7 @@ export default connect(
     { 
         down: (index) => dispatch({
                 type: KEY_DOWN,
-                payload: {index, fromTouch: true}
+                payload: {index, fromMouse: !detectTouch()}
         }),
         up: (index) => dispatch({
                 type: KEY_UP,
