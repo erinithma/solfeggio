@@ -4,11 +4,6 @@ import { connect } from 'react-redux';
 import {LOAD_SOUND} from '../../const';
 import $ from 'jquery';
 
-const smWidth = 576;
-const mdWidth = 768;
-const lgWidth = 992;
-const xlWidth = 1200;
-
 import {KEY_DOWN, KEY_UP, SELECT_OCTAVE, INCREMENT_OCTAVE, DECREMENT_OCTAVE} from '../../const';
 
 const workPlace = {
@@ -32,16 +27,16 @@ class Piano extends React.Component{
 
     componentDidMount() {
         this.props.loadSound();
-        $(window).on("resize", this.eventListener);
-        this.eventListener();
+        //$(window).on("resize", this.eventListener);
+        //this.eventListener();
         $("body").on("mouseup", this.onMouseUp);
         $("body").on("keydown", this.onKeyDown);
         $("body").on("keyup", this.onKeyUp);
     }
 
     componentWillUnmount() {
-        $(window).off("resize", this.eventListener);
-        this.eventListener();
+        //$(window).off("resize", this.eventListener);
+        //this.eventListener();
         $("body").off("mouseup", this.onMouseUp);
         $("body").off("keydown", this.onKeyDown);
         $("body").off("keyup", this.onKeyUp);
@@ -90,27 +85,20 @@ class Piano extends React.Component{
         }
     }
 
-    eventListener = (e) => {
-        if( $(window).width() < smWidth ){
-            this.setState({size: "sm"});
-        }
-        else if( $(window).width() < mdWidth ){
-            this.setState({size: "md"});
-        }
-        else
-            this.setState({size: "lg"});
+    /*eventListener = (e) => {
+       this.setState({size: getSize()});
     }
 
     state = {
-        size: 'lg'
-    }
+        size: 'xl'
+    }*/
 
     display = (i) => {
 
-        if(this.state.size === "sm"){
+        if(this.props.size === "sm"){
             return i === this.props.currentOctave;
         }
-        else if(this.state.size === "md"){
+        else if(this.props.size === "md"){
             let c = this.props.currentOctave;
 
             if(c > 0 && c < 4){
@@ -155,7 +143,8 @@ export default connect(
     (state) => (
     {
         currentOctave: state.sound.get("currentOctave"),
-        lastTouchIndex: state.sound.get("lastTouchIndex")
+        lastTouchIndex: state.sound.get("lastTouchIndex"),
+        size: state.sound.get("size")
     }),
     (dispatch) => ({
         loadSound: () => dispatch({

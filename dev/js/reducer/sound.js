@@ -1,5 +1,7 @@
 import SoundBuffer from '../classes/sound-buffer';
 import { Record } from 'immutable';
+import {getSize} from '../common/helpers';
+
 import { 
     LOAD_SOUND, 
     READY, 
@@ -7,7 +9,8 @@ import {
     KEY_UP, 
     SELECT_OCTAVE, 
     INCREMENT_OCTAVE, 
-    DECREMENT_OCTAVE 
+    DECREMENT_OCTAVE,
+    SET_SIZE 
     } from '../const';
 
 const Sound = new Record({
@@ -15,7 +18,8 @@ const Sound = new Record({
     state: 'empty',
     pressedKeys: new Array(60).fill(false),
     currentOctave: 2,
-    lastTouchIndex: -1
+    lastTouchIndex: -1,
+    size: getSize()
 });
 
 export default (sound = new Sound(), action) => {
@@ -49,16 +53,16 @@ export default (sound = new Sound(), action) => {
                 );   
 
         case SELECT_OCTAVE:
-            return sound
-                .set("currentOctave", payload.index);
+            return sound.set("currentOctave", payload.index);
 
         case INCREMENT_OCTAVE:
-            return sound
-                .set("currentOctave", currentOctave >= 4 ? 0 : currentOctave + 1);
+            return sound.set("currentOctave", currentOctave >= 4 ? 0 : currentOctave + 1);
 
         case DECREMENT_OCTAVE:
-            return sound
-                .set("currentOctave", currentOctave <= 0 ? 4 : currentOctave - 1);
+            return sound.set("currentOctave", currentOctave <= 0 ? 4 : currentOctave - 1);
+
+        case SET_SIZE:
+            return sound.set("size", payload.size);
 
         default:
             return sound;

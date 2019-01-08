@@ -4,6 +4,10 @@ import thunk from 'redux-thunk'
 import middleware from '../middleware';
 import { connectRouter, routerMiddleware } from 'connected-react-router'
 import history from '../history'
+import $ from 'jquery';
+import {getSize} from '../common/helpers';
+import {SET_SIZE} from '../const';
+
 /*
 const enhancer = compose(
   applyMiddleware(thunk, routerMiddleware(history), middleware)
@@ -17,4 +21,10 @@ const store = createStore(
   compose( applyMiddleware(thunk, routerMiddleware(history), middleware) )
 );
 
-export default store
+function onResize(){
+  store.dispatch({type: SET_SIZE, payload: {size: getSize()}})
+}
+
+$(window).on("load resize", onResize);
+
+export default store;
