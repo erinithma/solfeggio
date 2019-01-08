@@ -1,6 +1,7 @@
 import { Record } from 'immutable';
 import { getSize } from '../common/helpers';
 import PlayMode from '../modes/play';
+import {fill} from '../common/helpers';
 
 import { 
     LOAD_SOUND, 
@@ -10,13 +11,18 @@ import {
     SELECT_OCTAVE, 
     INCREMENT_OCTAVE, 
     DECREMENT_OCTAVE,
-    SET_SIZE 
+    SET_SIZE,
+    SET_MODE,
+    MODE_SELECT,
+    MODE_PLAY,
+    MODE_UPDATE 
     } from '../const';
 
-const Sound = new Record({
+const Sound = Record({
     mode: new PlayMode(),
+    showResults: true,
     state: 'empty',
-    pressedKeys: new Array(60).fill(false),
+    pressedKeys: fill(),
     currentOctave: 2,
     lastTouchIndex: -1,
     size: getSize()
@@ -63,6 +69,21 @@ export default (sound = new Sound(), action) => {
 
         case SET_SIZE:
             return sound.get("size") !== payload.size ? sound.set("size", payload.size) : sound;
+
+        case SET_MODE:
+            return sound
+                .set("mode", payload.mode)
+                .set("showResults", true);
+
+        case MODE_SELECT:
+            return sound.set("showResults", true);
+
+        case MODE_UPDATE:
+            let mode = sound.get("mode");
+            return sound
+                .set("showResults", !payload || payload.show === true)
+                .delete("mode")
+                .set("mode", mode);
 
         default:
             return sound;

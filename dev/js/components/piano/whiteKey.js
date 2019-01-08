@@ -6,9 +6,9 @@ import {detectTouch} from '../../common/helpers';
 class WhiteKey extends React.Component{
     render() {
         return detectTouch() ? 
-            <div className={`key white${this.props.pressed ? ' down' : ''}`} onTouchStart={this.onDown} onTouchEnd={this.onUp}></div>
+            <div className={`key white ${this.props.pressed ? 'down ' : ''} ${this.props.color || ''}`} onTouchStart={this.onDown} onTouchEnd={this.onUp}></div>
             : 
-            <div className={`key white${this.props.pressed ? ' down' : ''}`} onMouseDown={this.onDown} onMouseUp={this.onUp}></div>
+            <div className={`key white ${this.props.pressed ? 'down ' : ''} ${this.props.color || ''}`} onMouseDown={this.onDown} onMouseUp={this.onUp}></div>
     }
 
     onDown = () => {
@@ -24,17 +24,18 @@ export default connect(
     (state, ownProps) => (
     {
         pressed: state.sound.get("pressedKeys")[ownProps.index],
-        lastTouchIndex: state.sound.get("lastTouchIndex")
+        lastTouchIndex: state.sound.get("lastTouchIndex"),
+        color: state.sound.get("showResults") ? state.sound.get("mode").getColor(ownProps.index) : null
     }),
     (dispatch) => (
     { 
         down: (index) => dispatch({
-                type: KEY_DOWN,
-                payload: {index, fromMouse: !detectTouch()}
+            type: KEY_DOWN,
+            payload: {index, fromMouse: !detectTouch()}
         }),
         up: (index) => dispatch({
-                type: KEY_UP,
-                payload: {index}
+            type: KEY_UP,
+            payload: {index}
         })  
     })
 )(WhiteKey);

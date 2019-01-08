@@ -66,15 +66,15 @@ export default class SoundBuffer {
         return this.sounds[index];
     }
 
-    play(indexes, time){
+    play(indexes, time = 0){
         if(time < 0){
             indexes.slice().reverse().forEach( (val, index) => {
-                this.copy(val).play(index * (-time), 2)
+                this.get(val).play(index * (-time), 2)
             })
         }
         else{
             indexes.forEach( (val, index) => {
-                this.copy(val).play(index * time, 2)
+                this.get(val).play(index * time, 2)
             })
         }
         

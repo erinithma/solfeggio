@@ -21,3 +21,13 @@ export function getSize() {
     else
         return "xl";
 }
+
+export function random (min, max) {
+    var min_ = min || 0;
+    var max_ = max || 12 * 5 - 1; 
+    return Math.floor(Math.random() * (max_ - min_ + 1)) + min_;
+}
+
+export function fill (value = null, count = 60) {
+    return new Array(count).fill(value);
+}

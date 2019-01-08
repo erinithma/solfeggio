@@ -13,6 +13,10 @@
             "controller" => "TrainingInsideController"
         ],
         [
+            "path" => "/тренажер/мажор-минор",
+            "controller" => "TrainingInsideController"
+        ],
+        [
             "path" => "/обучение/",
             "controller" => "EducationController"
         ]

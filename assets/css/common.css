@@ -443,6 +443,7 @@ h3 {
           flex-direction: column;
   width: 80%;
   margin-right: auto;
+  margin-bottom: 20px;
 }
 @media (max-width: 1199px) {
   .piano-wrap {
@@ -570,6 +571,12 @@ h3 {
 .black.key.active {
   background-color: #999;
 }
+.black.key.red {
+  background-color: #C00;
+}
+.black.key.green {
+  background-color: #0C0;
+}
 .white.key {
   background-color: white;
   border-bottom: 1px solid black;
@@ -584,6 +591,12 @@ h3 {
 }
 .white.key.active {
   background-color: #ccc;
+}
+.white.key.red {
+  background-color: #F00;
+}
+.white.key.green {
+  background-color: #0C3;
 }
 .white.key.down {
   height: 98%;
@@ -676,6 +689,12 @@ h3 {
   background: -o-linear-gradient(top, #CCC, #FFF);
   background: linear-gradient(to bottom, #CCC, #FFF);
 }
+.button + .button {
+  margin-left: 12px;
+}
+.button > img {
+  margin-right: 4px;
+}
 .button--primary {
   background: -webkit-gradient(linear, left top, left bottom, from(#06F), to(#06C));
   background: -webkit-linear-gradient(top, #06F, #06C);
@@ -707,19 +726,19 @@ h3 {
   background: linear-gradient(to bottom, #0C0, #0C3);
 }
 .button--danger {
-  background: -webkit-gradient(linear, left top, left bottom, from(#F63), to(#F60));
-  background: -webkit-linear-gradient(top, #F63, #F60);
-  background: -o-linear-gradient(top, #F63, #F60);
-  background: linear-gradient(to bottom, #F63, #F60);
-  border: 1px solid #F60;
+  background: -webkit-gradient(linear, left top, left bottom, from(#F00), to(#C00));
+  background: -webkit-linear-gradient(top, #F00, #C00);
+  background: -o-linear-gradient(top, #F00, #C00);
+  background: linear-gradient(to bottom, #F00, #C00);
+  border: 1px solid #C00;
   color: white;
 }
 .button--danger:hover {
   color: white;
-  background: -webkit-gradient(linear, left top, left bottom, from(#F60), to(#F63));
-  background: -webkit-linear-gradient(top, #F60, #F63);
-  background: -o-linear-gradient(top, #F60, #F63);
-  background: linear-gradient(to bottom, #F60, #F63);
+  background: -webkit-gradient(linear, left top, left bottom, from(#C00), to(#F00));
+  background: -webkit-linear-gradient(top, #C00, #F00);
+  background: -o-linear-gradient(top, #C00, #F00);
+  background: linear-gradient(to bottom, #C00, #F00);
 }
 .list {
   background-color: #FFF;

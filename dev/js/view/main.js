@@ -1,7 +1,5 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-
-        
         
 export default class Main extends React.Component{
     render(){
@@ -14,10 +12,10 @@ export default class Main extends React.Component{
                     </NavLink>
                 </div>
                 <div class="item">
-                    <a class="item__content" data-prevent href="мажор-минор">
+                    <NavLink to="/тренажер/игра" className="item__content">
                         <img src="/assets/img/mindur.svg" alt="Мажор / минор" width="128" height="128" />
                         Мажор / минор
-                    </a>
+                    </NavLink>
                 </div>
                 <div class="item">
                     <a class="item__content" data-prevent href="ноты">

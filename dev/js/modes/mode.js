@@ -17,4 +17,8 @@ export default class Mode {
     loadAll(urls) {
         return Mode.sound.loadAll(urls);
     }
+
+    getColor(index) {
+        return false;
+    }
 }

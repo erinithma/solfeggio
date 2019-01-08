@@ -6,3 +6,7 @@ export const SELECT_OCTAVE = "SELECT_OCTAVE";
 export const INCREMENT_OCTAVE = "INCREMENT_OCTAVE";
 export const DECREMENT_OCTAVE = "DECREMENT_OCTAVE";
 export const SET_SIZE = "SET_SIZE";
+export const SET_MODE = "SET_MODE";
+export const MODE_SELECT = "MODE_SELECT";
+export const MODE_PLAY = "MODE_PLAY";
+export const MODE_UPDATE = "MODE_UPDATE";
