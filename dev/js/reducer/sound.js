@@ -14,7 +14,8 @@ const Sound = new Record({
     sound: new SoundBuffer(),
     state: 'empty',
     pressedKeys: new Array(60).fill(false),
-    currentOctave: 2
+    currentOctave: 2,
+    lastTouchIndex: -1
 });
 
 export default (sound = new Sound(), action) => {
@@ -22,12 +23,13 @@ export default (sound = new Sound(), action) => {
 
     switch(type){
         case LOAD_SOUND:
-            return sound
-                .set("state", "loading")
+            return sound.set("state", "loading")
         case LOAD_SOUND + READY:
-            return sound
-                .set("state", "loaded");     
+            return sound.set("state", "loaded");     
         case KEY_DOWN:
+            if(payload.fromTouch){
+                sound = sound.set("lastTouchIndex", payload.index);
+            }
             return sound
                 .update('pressedKeys', (pressedKeys) => 
                     pressedKeys.map( (v, i) => 

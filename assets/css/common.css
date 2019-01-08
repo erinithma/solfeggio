@@ -447,11 +447,12 @@ h3 {
 @media (max-width: 1199px) {
   .piano-wrap {
     width: 100%;
+    margin-left: auto;
   }
 }
-@media (max-width: 1199px) {
+@media (max-width: 575px) {
   .piano-wrap {
-    margin-left: auto;
+    max-width: 300px;
   }
 }
 .piano,
@@ -514,7 +515,7 @@ h3 {
 @media (max-width: 575px) {
   .octave,
   .octave-title {
-    height: 120px;
+    height: 80px;
   }
   .octave:nth-child(2),
   .octave-title:nth-child(2) {

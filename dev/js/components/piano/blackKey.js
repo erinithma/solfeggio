@@ -12,20 +12,22 @@ class BlackKey extends React.Component{
     }
 
     mouseUp = () => {
-        this.props.up(this.props.index);
+        if(this.props.lastTouchIndex !== -1)
+            this.props.up(this.props.lastTouchIndex);
     }
 }
 
 export default connect(
     (state, ownProps) => (
     {
-        pressed: state.sound.get("pressedKeys")[ownProps.index]        
+        pressed: state.sound.get("pressedKeys")[ownProps.index],
+        lastTouchIndex: state.sound.get("lastTouchIndex")        
     }),
     (dispatch) => (
     { 
         down: (index) => dispatch({
                 type: KEY_DOWN,
-                payload: {index}
+                payload: {index, fromTouch: true}
         }),
         up: (index) => dispatch({
                 type: KEY_UP,
