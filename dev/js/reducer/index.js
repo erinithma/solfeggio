@@ -8,9 +8,3 @@ const createRootReducer = (history) => combineReducers({
 });
 
 export default createRootReducer;
-
-/*
-export default combineReducers({
-  sound
-})
-*/

@@ -1,4 +1,4 @@
-require("../less/solfeggion.less");
+require("../less/solfeggio.less");
 
 import React from 'react';
 import ReactDOM from 'react-dom';

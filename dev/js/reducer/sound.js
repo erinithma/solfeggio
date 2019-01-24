@@ -58,8 +58,7 @@ export default (sound = new Sound(), action) => {
 
         case a.SET_MODE:
             return sound
-                .set("mode", payload.mode)
-                .set("showResults", true);
+                .set("mode", payload.mode);
 
         case a.MODE_SHOW_RESULT:
             return sound.set("result", sound.get("mode").getResult());
