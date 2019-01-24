@@ -1,5 +1,5 @@
 import Mode from './mode';
-import {random, fill} from '../common/helpers';
+import {random, map} from '../common/helpers';
 
 export default class MinDurMode extends Mode{
     constructor(){
@@ -51,7 +51,7 @@ export default class MinDurMode extends Mode{
     getResult(){
         return {
             success: this.result,
-            colors: fill().map( (_, i) => this.getColor(i) )
+            colors: map( i => this.getColor(i) )
         }
     }
 

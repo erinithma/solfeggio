@@ -22,12 +22,14 @@ export function getSize() {
         return "xl";
 }
 
-export function random (min, max) {
-    var min_ = min || 0;
-    var max_ = max || 12 * 5 - 1; 
-    return Math.floor(Math.random() * (max_ - min_ + 1)) + min_;
+export function random (min = 0, max = 12 * 5 - 1) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-export function fill (value = null, count = 60) {
+export function fill(count = 60, value = null) {
     return new Array(count).fill(value);
+}
+
+export function map(clb, count = 60) {
+    return fill(count).map( (_, i) => clb(i) );
 }

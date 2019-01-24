@@ -3,7 +3,8 @@ import Octave from './octave';
 import { connect } from 'react-redux';
 import {LOAD_SOUND} from '../../const';
 import $ from 'jquery';
-
+import {map} from '../../common/helpers';
+ 
 import {KEY_DOWN, KEY_UP, SELECT_OCTAVE, INCREMENT_OCTAVE, DECREMENT_OCTAVE} from '../../const';
 
 const workPlace = {
@@ -27,7 +28,7 @@ class Piano extends React.Component{
 
     componentDidMount() {
         this.props.loadSound();
-        
+
         $("body").on("mouseup", this.onMouseUp);
         $("body").on("keydown", this.onKeyDown);
         $("body").on("keyup", this.onKeyUp);
@@ -116,7 +117,7 @@ class Piano extends React.Component{
                 </div>
                 <div className="piano">
                     {
-                        (new Array(5)).fill(0).map((_, i) => <Octave current={this.props.currentOctave === i} key={i} index={i} display={this.display(i)}/>)
+                        map(i => <Octave current={this.props.currentOctave === i} key={i} index={i} display={this.display(i)}/>, 5)
                     }
                 </div>
                 <div className="piano-controls">
@@ -138,7 +139,7 @@ export default connect(
     (dispatch) => ({
         loadSound: () => dispatch({
             type: LOAD_SOUND,
-            payload: { urls: (new Array(60)).fill(0).map( (_, i) => `/sound/piano/${i}.mp3` ) }
+            payload: { urls: map( i => `/sound/piano/${i}.mp3` ) }
         }),
         keyDown: (index) => dispatch({
             type: KEY_DOWN,
