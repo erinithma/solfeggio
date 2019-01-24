@@ -499,34 +499,6 @@ h3 {
     height: 40px;
   }
 }
-@media (max-width: 767px) {
-  .octave,
-  .octave-title {
-    height: 60px;
-  }
-  .octave:first-child,
-  .octave-title:first-child {
-    display: none;
-  }
-  .octave:last-child,
-  .octave-title:last-child {
-    display: none;
-  }
-}
-@media (max-width: 575px) {
-  .octave,
-  .octave-title {
-    height: 80px;
-  }
-  .octave:nth-child(2),
-  .octave-title:nth-child(2) {
-    display: none;
-  }
-  .octave:nth-child(4),
-  .octave-title:nth-child(4) {
-    display: none;
-  }
-}
 .octave-title {
   height: 22px;
   font-size: 14px;
@@ -562,29 +534,6 @@ h3 {
 }
 #mode {
   position: relative;
-}
-.piano-list {
-  position: absolute;
-  top: 20px;
-  right: 0;
-  width: 180px;
-  -webkit-box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3);
-          box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3);
-}
-@media (max-width: 1199px) {
-  .piano-list {
-    top: 110px;
-  }
-}
-@media (max-width: 767px) {
-  .piano-list {
-    top: 150px;
-  }
-}
-@media (max-width: 575px) {
-  .piano-list {
-    display: none !important;
-  }
 }
 .button {
   height: 28px;

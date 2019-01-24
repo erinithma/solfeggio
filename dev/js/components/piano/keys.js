@@ -21,7 +21,7 @@ class Key extends React.Component{
     }
 }
 
-function _connect(component){
+function connectWith(component){
     return connect(
         (state, ownProps) => (
         {
@@ -105,6 +105,6 @@ const WhiteKey = styled(Key)`
 `;
 
 export default {
-    White: _connect(WhiteKey),
-    Black: _connect(BlackKey)
+    White: connectWith(WhiteKey),
+    Black: connectWith(BlackKey)
 }

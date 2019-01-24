@@ -3,7 +3,7 @@ import Octave from './octave';
 import { connect } from 'react-redux';
 import a from '../../const';
 import $ from 'jquery';
-import {map} from '../../common/helpers';
+import { map } from '../../common/helpers';
 
 const workPlace = {
 	ids : {
@@ -72,7 +72,7 @@ class Piano extends React.Component{
     }
 
     onKeyUp = (e) => {
-        let key = String.fromCharCode(e.keyCode);            
+        const key = String.fromCharCode(e.keyCode);            
             
         if(key in workPlace.ids){	
             const noteKey =  this.props.currentOctave * 12 + workPlace.ids[key];

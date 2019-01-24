@@ -35,26 +35,6 @@
   @media (max-width: (@lg-width - 1)){
     height: 40px;
   }
-
-  @media (max-width: (@md-width - 1)){
-      &:first-child{
-        display: none;
-      }
-      &:last-child{
-        display: none;
-      }
-      height: 60px;
-  }
-
-  @media (max-width: (@sm-width - 1)){
-    &:nth-child(2){
-      display: none;
-    }
-    &:nth-child(4){
-      display: none;
-    }
-    height: 80px;
-  }
 }
 
 .octave-title {
@@ -82,24 +62,4 @@
 
 #mode{
   position: relative;
-}
-
-.piano-list{
-  position: absolute;
-  top: 20px;
-  right: 0;
-  width: 180px;
-  .shadow();
-
-  @media (max-width: @xl-width - 1){
-    top: 110px;
-  }
-
-  @media (max-width: @md-width - 1){
-    top: 150px;
-  }
-
-  @media (max-width: @sm-width - 1){
-    display: none !important;
-  }
 }

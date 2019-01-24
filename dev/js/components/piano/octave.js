@@ -14,5 +14,5 @@ const Octave = ({current, className, index}) =>
     </div>;
 
 export default styled(Octave)`
-    ${props => props.display ? "flex" : "none"}
+    display: ${props => props.display ? "flex" : "none"};
 `
