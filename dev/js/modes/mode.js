@@ -1,7 +1,7 @@
-import SoundBuffer from '../classes/sound-buffer';
+import Sound from '../classes/sound';
 
 export default class Mode {
-    static sound = new SoundBuffer();
+    static sound = new Sound();
 
     keyDown(index) {
         Mode.sound.get(index).play();
@@ -18,7 +18,7 @@ export default class Mode {
         return Mode.sound.loadAll(urls);
     }
 
-    getColor(index) {
-        return false;
+    getResult() {
+        return null;
     }
 }
