@@ -1,19 +1,18 @@
 import React from 'react';
-import Level from './level';
-import LevelSingle from './levelSingle';
+import levels from './levels';
+import styled from 'styled-components';
 
-export default class Octave extends React.Component{
-    render(){
-        return (
-            <div className={`octave${this.props.current ? " octave--current" : ""}`} style={{display: this.props.display ? "flex" : "none"}}>
-                <Level index={this.props.index * 12 + 0}/>
-                <Level index={this.props.index * 12 + 2}/>
-                <LevelSingle index={this.props.index * 12 + 4}/>
-                <Level index={this.props.index * 12 + 5}/>
-                <Level index={this.props.index * 12 + 7}/>
-                <Level index={this.props.index * 12 + 9}/>
-                <LevelSingle index={this.props.index * 12 + 11}/>
-            </div>
-            );
-    }
-}
+const Octave = ({current, className, index}) => 
+    <div className={`octave${current ? " octave--current" : ""} ${className}`}>
+        <levels.Normal index={index * 12 + 0}/>
+        <levels.Normal index={index * 12 + 2}/>
+        <levels.Single index={index * 12 + 4}/>
+        <levels.Normal index={index * 12 + 5}/>
+        <levels.Normal index={index * 12 + 7}/>
+        <levels.Normal index={index * 12 + 9}/>
+        <levels.Single index={index * 12 + 11}/>
+    </div>;
+
+export default styled(Octave)`
+    ${props => props.display ? "flex" : "none"}
+`

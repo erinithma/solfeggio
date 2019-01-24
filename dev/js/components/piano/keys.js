@@ -64,10 +64,6 @@ const BlackKey = styled(Key)`
         background-color: #666;
     }
   
-    &.active {
-        background-color: #999;
-    }
-  
     ${props => 
         props.color === 'red' ? `background-color: #C00;` : 
         props.color === 'green' ? `background-color: #0C0;` : ''
@@ -93,10 +89,6 @@ const WhiteKey = styled(Key)`
 
     &:hover {
         background-color: #eee;
-    }
-      
-    &.active {
-        background-color: #ccc;
     }
 
     ${props => 
