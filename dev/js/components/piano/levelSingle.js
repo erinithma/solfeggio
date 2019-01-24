@@ -1,11 +1,11 @@
 import React from 'react';
-import WhiteKey from './whiteKey';
+import keys from './keys';
 
 export default class Level extends React.Component{
     render(){
         return (
             <div className="level">
-                <WhiteKey index={this.props.index}/>
+                <keys.White index={this.props.index}/>
             </div>);
     }
 }

@@ -27,6 +27,7 @@ class Piano extends React.Component{
 
     componentDidMount() {
         this.props.loadSound();
+        
         $("body").on("mouseup", this.onMouseUp);
         $("body").on("keydown", this.onKeyDown);
         $("body").on("keyup", this.onKeyUp);
