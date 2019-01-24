@@ -1,11 +1,9 @@
 import React from 'react';
 import Octave from './octave';
 import { connect } from 'react-redux';
-import {LOAD_SOUND} from '../../const';
+import a from '../../const';
 import $ from 'jquery';
 import {map} from '../../common/helpers';
- 
-import {KEY_DOWN, KEY_UP, SELECT_OCTAVE, INCREMENT_OCTAVE, DECREMENT_OCTAVE} from '../../const';
 
 const workPlace = {
 	ids : {
@@ -138,26 +136,26 @@ export default connect(
     }),
     (dispatch) => ({
         loadSound: () => dispatch({
-            type: LOAD_SOUND,
+            type: a.LOAD_SOUND,
             payload: { urls: map( i => `/sound/piano/${i}.mp3` ) }
         }),
         keyDown: (index) => dispatch({
-            type: KEY_DOWN,
+            type: a.KEY_DOWN,
             payload: {index}
         }),
         keyUp: (index) => dispatch({
-            type: KEY_UP,
+            type: a.KEY_UP,
             payload: {index}
         }),
         selectOctave: (index) => dispatch({
-            type: SELECT_OCTAVE,
+            type: a.SELECT_OCTAVE,
             payload: {index}
         }),
         nextOctave: () => dispatch({
-            type: INCREMENT_OCTAVE
+            type: a.INCREMENT_OCTAVE
         }),
         prevOctave: () => dispatch({
-            type: DECREMENT_OCTAVE
+            type: a.DECREMENT_OCTAVE
         })    
     })
 )(Piano)

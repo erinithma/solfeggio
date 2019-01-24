@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {KEY_DOWN, KEY_UP} from '../../const';
+import a from '../../const';
 import {detectTouch} from '../../common/helpers';
 import styled from 'styled-components';
 
@@ -32,11 +32,11 @@ function _connect(component){
         (dispatch) => (
         { 
             down: (index) => dispatch({
-                type: KEY_DOWN,
+                type: a.KEY_DOWN,
                 payload: {index, fromMouse: !detectTouch()}
             }),
             up: (index) => dispatch({
-                type: KEY_UP,
+                type: a.KEY_UP,
                 payload: {index}
             })  
         })

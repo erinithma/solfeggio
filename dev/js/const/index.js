@@ -1,14 +1,21 @@
-export const LOAD_SOUND = "LOAD_SOUND";
-export const READY = "_READY";
-export const KEY_DOWN = "KEY_DOWN";
-export const KEY_UP = "KEY_UP";
-export const SELECT_OCTAVE = "SELECT_OCTAVE";
-export const INCREMENT_OCTAVE = "INCREMENT_OCTAVE";
-export const DECREMENT_OCTAVE = "DECREMENT_OCTAVE";
-export const SET_SIZE = "SET_SIZE";
-export const SET_MODE = "SET_MODE";
-export const MODE_SELECT = "MODE_SELECT";
-export const MODE_PLAY = "MODE_PLAY";
-export const MODE_UPDATE = "MODE_UPDATE";
-export const MODE_SHOW_RESULT = "MODE_SHOW_RESULT";
-export const MODE_HIDE_RESULT = "MODE_HIDE_RESULT";
+let c = {
+    LOAD_SOUND: '',
+    READY: '_%',
+    KEY_DOWN: '',
+    KEY_UP: '',
+    SELECT_OCTAVE: '',
+    INCREMENT_OCTAVE: '',
+    DECREMENT_OCTAVE: '',
+    SET_SIZE: '',
+    SET_MODE: '',
+    MODE_SELECT: '',
+    MODE_PLAY: '',
+    MODE_UPDATE: '',
+    MODE_SHOW_RESULT: '',
+    MODE_HIDE_RESULT: ''
+};
+
+import {build} from '../common/helpers';
+
+export default build(c);
+

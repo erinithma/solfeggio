@@ -33,3 +33,14 @@ export function fill(count = 60, value = null) {
 export function map(clb, count = 60) {
     return fill(count).map( (_, i) => clb(i) );
 }
+
+export function build(obj) {
+    Object.keys(obj).forEach( v => {
+        if(!obj[v])
+            obj[v] = v;
+        else
+            obj[v] = [].map.call(obj[v], w => w === '%' ? v : w);
+    });
+
+    return obj;
+}

@@ -2,7 +2,7 @@ import React from 'react';
 import Piano from '../components/piano';
 import Menu from '../components/switch'; 
 import { connect } from 'react-redux';
-import { SET_MODE } from '../const';
+import a from '../const';
 import PlayMode from '../modes/play';
 
 class Play extends React.Component{
@@ -24,7 +24,7 @@ export default connect(
     (dispatch) => (
     { 
         setMode: () => dispatch({
-            type: SET_MODE,
+            type: a.SET_MODE,
             payload: {mode: new PlayMode()}
         })
     })

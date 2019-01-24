@@ -1,4 +1,4 @@
-import { READY, LOAD_SOUND, KEY_DOWN, KEY_UP, MODE_PLAY, MODE_SELECT, MODE_SHOW_RESULT, MODE_HIDE_RESULT } from '../const'
+import a from '../const'
 import {fill} from '../common/helpers';
 
 let resultTimeout = null;
@@ -8,14 +8,14 @@ export default (store) => (next) => (action) => {
     const sound = store.getState().sound;
 
     switch(type){
-        case LOAD_SOUND:
+        case a.LOAD_SOUND:
             if(sound.get("state") === "empty"){
                 sound
                     .get("mode")
                     .loadAll(payload.urls)
                     .addListener(
                         "loaded", 
-                        () => next({ ...rest, payload, type: type + READY })
+                        () => next({ ...rest, payload, type: type + a.READY })
                     )
             }
             else{
@@ -23,7 +23,7 @@ export default (store) => (next) => (action) => {
             }            
             break;
 
-        case KEY_DOWN:
+        case a.KEY_DOWN:
             sound
                 .get("mode")
                 .keyDown(payload.index)
@@ -31,7 +31,7 @@ export default (store) => (next) => (action) => {
             next(action);            
             break;
 
-        case KEY_UP:
+        case a.KEY_UP:
             sound
                 .get("mode")
                 .keyUp(payload.index);
@@ -39,7 +39,7 @@ export default (store) => (next) => (action) => {
             next(action);
             break;
 
-        case MODE_SELECT:
+        case a.MODE_SELECT:
             sound
                 .get("mode")
                 .select(payload.select);
@@ -49,15 +49,15 @@ export default (store) => (next) => (action) => {
                 resultTimeout = null;
             }                
 
-            next({type: MODE_SHOW_RESULT});
+            next({type: a.MODE_SHOW_RESULT});
 
             resultTimeout = setTimeout(() => {
-                next({type: MODE_HIDE_RESULT});
+                next({type: a.MODE_HIDE_RESULT});
             }, 2500);
 
             break;
 
-        case MODE_PLAY:
+        case a.MODE_PLAY:
             sound
                 .get("mode")
                 .play(payload.value);
@@ -67,7 +67,7 @@ export default (store) => (next) => (action) => {
                 resultTimeout = null;
             } 
 
-            next({type: MODE_HIDE_RESULT});
+            next({type: a.MODE_HIDE_RESULT});
 
             break;
 

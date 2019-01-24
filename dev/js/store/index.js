@@ -6,7 +6,7 @@ import { connectRouter, routerMiddleware } from 'connected-react-router'
 import history from '../history'
 import $ from 'jquery';
 import {getSize} from '../common/helpers';
-import {SET_SIZE} from '../const';
+import a from '../const';
 
 /*
 const enhancer = compose(
@@ -22,7 +22,7 @@ const store = createStore(
 );
 
 function onResize(){
-  store.dispatch({type: SET_SIZE, payload: {size: getSize()}})
+  store.dispatch({type: a.SET_SIZE, payload: {size: getSize()}})
 }
 
 $(window).on("load resize", onResize);

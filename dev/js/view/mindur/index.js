@@ -5,7 +5,7 @@ import major from './img/major.svg';
 import minor from './img/minor.svg';
 import play from './img/play.svg';
 import { connect } from 'react-redux';
-import { SET_MODE, MODE_SELECT, MODE_PLAY } from '../../const';
+import a from '../../const';
 import MinDurMode from '../../modes/mindur';
 
 class MinDur extends React.Component{
@@ -70,15 +70,15 @@ export default connect(
     (dispatch) => (
     { 
         setMode: () => dispatch({
-            type: SET_MODE,
+            type: a.SET_MODE,
             payload: {mode: new MinDurMode()}
         }),
         select: (type) => dispatch({
-            type: MODE_SELECT,
+            type: a.MODE_SELECT,
             payload: {select: type}
         }),
         play: () => dispatch({
-            type: MODE_PLAY,
+            type: a.MODE_PLAY,
             payload: {value: false}
         })
     })
