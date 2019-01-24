@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
+import { smWidth, mdWidth, lgWidth, xlWidth } from '../../common/helpers';
 
 const Menu = ({className}) => 
     <div className={`list ${className}`}>
@@ -16,17 +17,16 @@ export default styled(Menu)`
     top: 20px;
     right: 0;
     width: 180px;
-    .shadow();
   
-    @media (max-width: @xl-width - 1){
+    @media (max-width: ${xlWidth - 1}px){
       top: 110px;
     }
   
-    @media (max-width: @md-width - 1){
+    @media (max-width: ${mdWidth - 1}px){
       top: 150px;
     }
   
-    @media (max-width: @sm-width - 1){
+    @media (max-width: ${smWidth - 1}px){
       display: none !important;
     }
 `;

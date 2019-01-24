@@ -1,9 +1,9 @@
 import $ from 'jquery';
 
-const smWidth = 576;
-const mdWidth = 768;
-const lgWidth = 992;
-const xlWidth = 1200;
+export const smWidth = 576;
+export const mdWidth = 768;
+export const lgWidth = 992;
+export const xlWidth = 1200;
 
 export function detectTouch() {
     return (('ontouchstart' in window) || window['DocumentTouch'] && document instanceof DocumentTouch);
