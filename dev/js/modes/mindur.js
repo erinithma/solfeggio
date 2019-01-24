@@ -1,5 +1,5 @@
 import Mode from './mode';
-import {random, map} from '../common/helpers';
+import {random, map} from '../common';
 
 export default class MinDurMode extends Mode{
     constructor(){

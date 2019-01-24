@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
-import { smWidth, mdWidth, lgWidth, xlWidth } from '../../common/helpers';
+import { smWidth, mdWidth, lgWidth, xlWidth } from '../../common';
 
 const Menu = ({className}) => 
     <div className={`list ${className}`}>

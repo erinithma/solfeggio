@@ -15,7 +15,7 @@ let c = {
     MODE_HIDE_RESULT: ''
 };
 
-import {build} from '../common/helpers';
+import {build} from '../common';
 
 export default build(c);
 

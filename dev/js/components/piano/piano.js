@@ -3,7 +3,7 @@ import Octave from './octave';
 import { connect } from 'react-redux';
 import a from '../../const';
 import $ from 'jquery';
-import { map } from '../../common/helpers';
+import { map } from '../../common';
 
 const workPlace = {
 	ids : {

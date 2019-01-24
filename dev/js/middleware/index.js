@@ -1,5 +1,5 @@
 import a from '../const'
-import {fill} from '../common/helpers';
+import {fill} from '../common';
 
 let resultTimeout = null;
 

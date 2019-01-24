@@ -1,7 +1,7 @@
 import { Record } from 'immutable';
-import { getSize } from '../common/helpers';
+import { getSize } from '../common';
 import PlayMode from '../modes/play';
-import {fill} from '../common/helpers';
+import {fill} from '../common';
 import a from '../const';
 
 const Sound = Record({

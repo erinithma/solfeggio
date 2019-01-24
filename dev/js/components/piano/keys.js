@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import a from '../../const';
-import {detectTouch} from '../../common/helpers';
+import {detectTouch} from '../../common';
 import styled from 'styled-components';
 
 class Key extends React.Component{

@@ -5,7 +5,7 @@ import middleware from '../middleware';
 import { routerMiddleware } from 'connected-react-router'
 import history from '../history'
 import $ from 'jquery';
-import { getSize } from '../common/helpers';
+import { getSize } from '../common';
 import a from '../const';
 
 const store = createStore(
