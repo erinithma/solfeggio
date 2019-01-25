@@ -120,7 +120,7 @@ class Piano extends React.Component{
                 </div>
                 <div className="piano-controls">
                     <button id="leftOctave" className="button" onClick={this.props.prevOctave}>←</button>
-                    <button id="rightOctave" className="button left-offset" onClick={this.props.nextOctave}>→</button>
+                    <button id="rightOctave" className="button" style={{marginLeft: "auto"}} onClick={this.props.nextOctave}>→</button>
                 </div>
             </div>  
         );

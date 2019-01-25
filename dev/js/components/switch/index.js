@@ -9,6 +9,7 @@ const Menu = ({className}) =>
         <NavLink to="/тренажер/мажор-минор">Мажор / минор</NavLink>
         <NavLink to="/тренажер/ноты">Ноты</NavLink>
         <NavLink to="/тренажер/интервалы">Интервалы</NavLink>
+        <NavLink to="/тренажер/трезвучия">Трезвучия</NavLink>
         <NavLink to="/тренажер/диктант">Диктант</NavLink>
     </div>;
 

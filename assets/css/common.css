@@ -570,8 +570,8 @@ h3 {
 }
 @media (max-width: 575px) {
   .button {
-    height: 32px;
-    font-size: 22px;
+    height: 30px;
+    font-size: 18px;
   }
 }
 .button:hover {
