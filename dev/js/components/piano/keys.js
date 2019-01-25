@@ -70,7 +70,10 @@ const BlackKey = styled(Key)`
     }
 
     ${props => 
-        props.pressed ? `height: 63%;` : ''
+        props.pressed ? `
+            height: 63%;
+            background: linear-gradient(to bottom, #777, #5f5f5f); 
+        ` : ''
     }
 `;
 
@@ -100,6 +103,7 @@ const WhiteKey = styled(Key)`
         props.pressed ? `
             height: 98%;
             box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.6);
+            background: linear-gradient(to bottom, #fff, #cfcfcf); 
         ` : ''
     }
 `;
