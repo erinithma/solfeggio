@@ -583,7 +583,8 @@ h3 {
 .button + .button {
   margin-left: 12px;
 }
-.button > img {
+.button > img,
+.button > svg {
   margin-right: 4px;
 }
 .button--primary {
@@ -594,12 +595,18 @@ h3 {
   border: 1px solid #06C;
   color: white;
 }
+.button--primary > svg path {
+  fill: white;
+}
 .button--primary:hover {
   color: white;
   background: -webkit-gradient(linear, left top, left bottom, from(#06C), to(#06F));
   background: -webkit-linear-gradient(top, #06C, #06F);
   background: -o-linear-gradient(top, #06C, #06F);
   background: linear-gradient(to bottom, #06C, #06F);
+}
+.button--primary:hover > svg path {
+  fill: white;
 }
 .button--success {
   background: -webkit-gradient(linear, left top, left bottom, from(#0C3), to(#0C0));
@@ -609,12 +616,18 @@ h3 {
   border: 1px solid #0C0;
   color: white;
 }
+.button--success > svg path {
+  fill: white;
+}
 .button--success:hover {
   color: white;
   background: -webkit-gradient(linear, left top, left bottom, from(#0C0), to(#0C3));
   background: -webkit-linear-gradient(top, #0C0, #0C3);
   background: -o-linear-gradient(top, #0C0, #0C3);
   background: linear-gradient(to bottom, #0C0, #0C3);
+}
+.button--success:hover > svg path {
+  fill: white;
 }
 .button--danger {
   background: -webkit-gradient(linear, left top, left bottom, from(#F00), to(#C00));
@@ -624,12 +637,18 @@ h3 {
   border: 1px solid #C00;
   color: white;
 }
+.button--danger > svg path {
+  fill: white;
+}
 .button--danger:hover {
   color: white;
   background: -webkit-gradient(linear, left top, left bottom, from(#C00), to(#F00));
   background: -webkit-linear-gradient(top, #C00, #F00);
   background: -o-linear-gradient(top, #C00, #F00);
   background: linear-gradient(to bottom, #C00, #F00);
+}
+.button--danger:hover > svg path {
+  fill: white;
 }
 .list {
   background-color: #FFF;
