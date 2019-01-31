@@ -10,16 +10,15 @@ export function detectTouch() {
 }
 
 export function getSize() {
-    if( $(window).width() < smWidth ){
+    if( $(window).width() < smWidth )
         return "sm";
-    }
-    else if( $(window).width() < mdWidth ){
+    else if( $(window).width() < mdWidth )
         return "md";
-    }
     else if( $(window).width() < lgWidth )
         return "lg";
-    else
+    else if( $(window).width() < xlWidth )
         return "xl";
+    return "xl+";
 }
 
 export function random (min = 0, max = 12 * 5 - 1) {

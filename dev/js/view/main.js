@@ -12,7 +12,7 @@ export default class Main extends React.Component{
                     </NavLink>
                 </div>
                 <div class="item">
-                    <NavLink to="/тренажер/игра" className="item__content">
+                    <NavLink to="/тренажер/мажор-минор" className="item__content">
                         <img src="/assets/img/mindur.svg" alt="Мажор / минор" width="100" height="100" />
                         Мажор / минор
                     </NavLink>
