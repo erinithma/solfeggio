@@ -4,7 +4,7 @@ function init(){
     if(!localStorage.getItem(NAME))
         localStorage.setItem(NAME, JSON.stringify({
             common: {
-                total: 10
+                total: +localStorage.getItem('limit') || 10
             },
             modes: {}
         }));

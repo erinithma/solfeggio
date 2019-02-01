@@ -1,7 +1,6 @@
 import { Record } from 'immutable';
-import { getSize } from '../common';
+import { getSize, fill } from '../common';
 import PlayMode from '../modes/play';
-import {fill} from '../common';
 import a from '../const';
 
 const Sound = Record({
@@ -13,8 +12,48 @@ const Sound = Record({
     currentOctave: 2,
     lastTouchIndex: -1,
     size: getSize(),
-    counter: 0
+    counter: 0,
+    offset: getOffset(2),
+    tempOffset: null
 });
+
+function getOffset(index) {
+    switch(getSize()){
+        case 'sm':
+            return index * -300;            
+        case 'md':
+            return (index === 0 ? 0 : index - 1) * -173;
+        default:
+            return 0;
+    }
+}
+
+function setOffset(sound, index) {
+    return sound.set("offset", getOffset(index));            
+}
+/*
+function scrollToNote(index) {
+    var value = 0;
+
+    switch(getSize()){
+        case 'sm':
+            if(index >= 60 - 12 - 1)
+                value = -300 * 4;
+            value = index * (-300 / 12) + (300 / 2);  
+            break;          
+        case 'md':
+            if(index >= 60 - 12 * 3 - 1)
+                value = -173 * 2;
+            else
+                value = -173 / 12;
+            break; 
+        default:
+            value = 0;
+            break; 
+    }
+
+    return value >= 0 ? 0 : value;      
+}*/
 
 export default (sound = new Sound(), action) => {
     const {type, payload} = action;
@@ -47,16 +86,19 @@ export default (sound = new Sound(), action) => {
                 );   
 
         case a.SELECT_OCTAVE:
-            return sound.set("currentOctave", payload.index);
+            return setOffset(sound.set("currentOctave", payload.index), payload.index);
 
         case a.INCREMENT_OCTAVE:
-            return sound.set("currentOctave", currentOctave >= 4 ? 0 : currentOctave + 1);
+            return (index => setOffset(sound.set("currentOctave", index), index))(currentOctave >= 4 ? 0 : currentOctave + 1);
 
         case a.DECREMENT_OCTAVE:
-            return sound.set("currentOctave", currentOctave <= 0 ? 4 : currentOctave - 1);
+            return (index => setOffset(sound.set("currentOctave", index), index))(currentOctave <= 0 ? 4 : currentOctave - 1);
 
         case a.SET_SIZE:
-            return sound.get("size") !== payload.size ? sound.set("size", payload.size) : sound;
+            return sound.get("size") !== payload.size ? 
+                setOffset(sound.set("size", payload.size), currentOctave)
+                : 
+                sound;
 
         case a.SET_MODE:
             return sound
@@ -77,6 +119,12 @@ export default (sound = new Sound(), action) => {
 
         case a.MODE_COUNT:
             return sound.set("counter", payload.count);
+
+        case a.SCROLL_TEMP:
+            return sound.set("tempOffset", payload.value);
+
+        case a.CLEAR_SCROLL:
+            return sound.set("tempOffset", null);
 
         default:
             return sound;

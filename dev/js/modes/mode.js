@@ -10,7 +10,8 @@ export default class Mode {
 
     events = {
         counter: null,
-        finish: null
+        finish: null,
+        offset: null
     }
 
     keyDown(index) {

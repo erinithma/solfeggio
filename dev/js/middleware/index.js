@@ -1,7 +1,8 @@
 import a from '../const'
-import {fill} from '../common';
+import {fill, getSize} from '../common';
 
-let resultTimeout = null;
+let resultTimeout = null, offsetTimeout = null;
+let backOffset = 0;
 
 export default (store) => (next) => (action) => {
     const { type, payload, ...rest } = action;
@@ -48,7 +49,11 @@ export default (store) => (next) => (action) => {
             if(resultTimeout !== null){
                 clearTimeout(resultTimeout);
                 resultTimeout = null;
-            }                
+            }          
+            if(offsetTimeout !== null){
+                clearTimeout(offsetTimeout);
+                offsetTimeout = null;
+            }      
 
             next({type: a.MODE_SHOW_RESULT});
 
@@ -69,6 +74,10 @@ export default (store) => (next) => (action) => {
                 clearTimeout(resultTimeout);
                 resultTimeout = null;
             } 
+            if(offsetTimeout !== null){
+                clearTimeout(offsetTimeout);
+                offsetTimeout = null;
+            } 
 
             next({type: a.MODE_HIDE_RESULT});
 
@@ -76,7 +85,8 @@ export default (store) => (next) => (action) => {
 
         case a.SET_MODE:
             next(action);
-            next({ type: a.MODE_COUNT, payload: {count: 0} })
+            next({ type: a.MODE_COUNT, payload: {count: 0} });
+            next({ type: a.CLEAR_SCROLL });
 
             store.getState().sound
                 .get("mode")
@@ -91,9 +101,22 @@ export default (store) => (next) => (action) => {
                     (result) => {
                         setTimeout( () => {
                             next({ type: a.MODE_COUNT, payload: {count: 0} });
-                            next({ type: a.MODE_SHOW_TOTAL, payload: {result} }) 
+                            next({ type: a.MODE_SHOW_TOTAL, payload: {result} });
                         },
                         300);                        
+                    }
+                )
+                .addListener(
+                    "offset", 
+                    (value) => {
+                        next({ type: a.SCROLL_TEMP, payload: {value} });  
+                        if(!offsetTimeout){
+                            clearTimeout(offsetTimeout);
+                            offsetTimeout = 0;
+                        }
+                        offsetTimeout = setTimeout( () => {
+                            next({ type: a.CLEAR_SCROLL });  
+                        }, 2500);               
                     }
                 );
             break;

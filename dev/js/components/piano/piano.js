@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import a from '../../const';
 import $ from 'jquery';
 import { map } from '../../common';
+import {PianoLike} from '../../components/common';
 
 const workPlace = {
 	ids : {
@@ -104,25 +105,37 @@ class Piano extends React.Component{
         }
     }
 
+    nextOctave = () => {
+        this.props.nextOctave();
+    }
+
+    prevOctave = () => {
+        this.props.prevOctave();
+    }
+
     render(){
         return (
-            <div className="piano-wrap">
-                <div className="piano-titles">
-                    {
-                        ['большая октава', 'малая октава', 'первая октава', 'вторая октава' , 'третья октава'].map( (v, i) => 
-                            <div className="octave-title" style={{display: this.display(i) ? "flex" : "none"}}>{v}</div> )
-                    }
+            <React.Fragment>
+                <div className="piano-wrap">
+                    <div className="piano-wrap__scroll-area" style={{left: (this.props.tempOffset !== null ? this.props.tempOffset : this.props.offset) + "px"}}>
+                        <div className="piano-titles">
+                            {
+                                ['большая октава', 'малая октава', 'первая октава', 'вторая октава' , 'третья октава'].map( v => 
+                                    <div className="octave-title">{v}</div> )
+                            }
+                        </div>
+                        <div className="piano">
+                            {
+                                map(i => <Octave current={this.props.currentOctave === i} key={i} index={i} />, 5)
+                            }
+                        </div>
+                    </div>   
                 </div>
-                <div className="piano">
-                    {
-                        map(i => <Octave current={this.props.currentOctave === i} key={i} index={i} display={this.display(i)}/>, 5)
-                    }
-                </div>
-                <div className="piano-controls">
-                    <button id="leftOctave" className="button" onClick={this.props.prevOctave}>←</button>
-                    <button id="rightOctave" className="button" style={{marginLeft: "auto"}} onClick={this.props.nextOctave}>→</button>
-                </div>
-            </div>  
+                <PianoLike className="piano-controls">
+                    <button id="leftOctave" className="button" onClick={this.prevOctave}>←</button>
+                    <button id="rightOctave" className="button" style={{marginLeft: "auto"}} onClick={this.nextOctave}>→</button>
+                </PianoLike> 
+            </React.Fragment>
         );
     }
 }
@@ -132,7 +145,9 @@ export default connect(
     {
         currentOctave: state.sound.get("currentOctave"),
         lastTouchIndex: state.sound.get("lastTouchIndex"),
-        size: state.sound.get("size")
+        size: state.sound.get("size"),
+        offset: state.sound.get("offset"),
+        tempOffset: state.sound.get("tempOffset")
     }),
     (dispatch) => ({
         loadSound: () => dispatch({

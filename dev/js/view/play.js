@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import a from '../const';
 import PlayMode from '../modes/play';
 import Counter from '../components/counter';
-import {Row} from '../components/common';
+import {Row, PianoLike} from '../components/common';
 
 class Play extends React.Component{
     constructor(props){
@@ -17,9 +17,9 @@ class Play extends React.Component{
         return <React.Fragment>
                 <Piano />
                 <Menu />
-                <Row className="piano-wrap">
+                <PianoLike>
                     <Counter />
-                </Row>
+                </PianoLike>
             </React.Fragment>;
     }
 }

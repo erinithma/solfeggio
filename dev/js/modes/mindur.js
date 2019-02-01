@@ -1,5 +1,5 @@
 import Mode from './mode';
-import {random, map} from '../common';
+import {random, map, getSize} from '../common';
 import storage from '../common/storage';
 
 export default class MinDurMode extends Mode{
@@ -36,6 +36,7 @@ export default class MinDurMode extends Mode{
         this.counter++;
 
         this.fire("counter", this.counter);
+        this.fire("offset", this.getOffset());
 
         if(type === this.type) {
             this.result = true;
@@ -81,6 +82,35 @@ export default class MinDurMode extends Mode{
         }
     }
 
+    getOffset(){
+        let index = this.accord[0];
+        let value = null;
+
+        let notes = [
+            0, 0, 1, 1, 2, 3, 3, 4, 4, 5, 5, 6,
+            7, 7, 1 + 7, 1 + 7, 2 + 7, 3 + 7, 3 + 7, 4 + 7, 4 + 7, 5 + 7, 5 + 7, 6 + 7,
+            14, 14, 1 + 14, 1 + 14, 2 + 14, 3 + 14, 3 + 14, 4 + 14, 4 + 14, 5 + 14, 5 + 14, 6 + 14,
+            21, 21, 1 + 21, 1 + 21, 2 + 21, 3 + 21, 3 + 21, 4 + 21, 4 + 21, 5 + 21, 5 + 21, 6 + 21,
+            28, 28, 1 + 28, 1 + 28, 2 + 28, 3 + 28, 3 + 28, 4 + 28, 4 + 28, 5 + 28, 5 + 28, 6 + 28]
+            
+        switch(getSize()){
+            case 'sm':
+                if(index >= 60 - 12 - 1)
+                    value = -300 * 4;
+                else
+                    value = -(notes[this.accord[1]]) * 300 / 7 + 300 / 2;
+                break;          
+            case 'md':
+                if(index >= 60 - 12 * 3 - 1)
+                    value = -173 * 2;
+                else
+                    value = -(notes[this.accord[1]]) * 173 / 7 + 173 * 3 / 2;
+                break; 
+        }
+
+        return value === null ? null : value >= 0 ? 0 : value;
+    }
+
     getTotalResult(){
         return {
             total: Math.floor( (this.minorSuccess + this.majorSuccess) / this.total * 100 ),
@@ -101,7 +131,6 @@ export default class MinDurMode extends Mode{
 
     clear() {
         this.next = false;
-        this.result = null;
         this.counter = 0;
         this.minorSuccess = 0;
         this.majorSuccess = 0;

@@ -15,7 +15,9 @@ let c = {
     MODE_HIDE_RESULT: '',
     MODE_COUNT: '',
     MODE_SHOW_TOTAL: '',
-    MODE_HIDE_TOTAL: ''
+    MODE_HIDE_TOTAL: '',
+    SCROLL_TEMP: '',
+    CLEAR_SCROLL: ''
 };
 
 import {build} from '../common';

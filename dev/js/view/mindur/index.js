@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import a from '../../const';
 import MinDurMode from '../../modes/mindur';
 import Counter from '../../components/counter';
-import {Row}  from '../../components/common';
+import {Row, PianoLike}  from '../../components/common';
 
 class MinDur extends React.Component{
     constructor(props){
@@ -27,7 +27,7 @@ class MinDur extends React.Component{
             <React.Fragment>
                 <Piano />
                 <Menu />
-                <div className="piano-wrap">
+                <PianoLike>
                     {this.state.guess || this.props.success !== null ? 
                         <div>
                             <Row>
@@ -50,15 +50,15 @@ class MinDur extends React.Component{
                             <Counter count={this.props.counter}/>
                         </Row>
                     }
-                </div>
+                </PianoLike>
                 {
                     total ?
-                    <div className="piano-wrap">
+                    <PianoLike>
                         <h4>Результат</h4>
                         <div>Итого: <i>{total.total}% ({total.totalSuccess} / {total.totalCount})</i></div>
                         <div>Минор: <i>{total.minor}% ({total.minorSuccess} / {total.minorCount})</i></div>
                         <div>Мажор: <i>{total.major}% ({total.majorSuccess} / {total.majorCount})</i></div>
-                    </div>
+                    </PianoLike>
                     : ''
                 }
                 

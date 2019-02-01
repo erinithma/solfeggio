@@ -445,7 +445,7 @@ h3 {
     top: 100%;
   }
 }
-.piano-wrap {
+.piano-like {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -453,19 +453,109 @@ h3 {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  width: 80%;
+  width: 896px;
   margin-right: auto;
   margin-bottom: 20px;
 }
 @media (max-width: 1199px) {
-  .piano-wrap {
-    width: 100%;
+  .piano-like {
+    width: 940px;
     margin-left: auto;
+  }
+}
+@media (max-width: 991px) {
+  .piano-like {
+    width: 700px;
+  }
+}
+@media (max-width: 767px) {
+  .piano-like {
+    width: 520px;
+  }
+}
+@media (max-width: 575px) {
+  .piano-like {
+    width: 300px;
+  }
+}
+.piano-wrap {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 896px;
+  margin-right: auto;
+  height: 82px;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+@media (max-width: 1199px) {
+  .piano-wrap {
+    width: 940px;
+    margin-left: auto;
+  }
+}
+@media (max-width: 991px) {
+  .piano-wrap {
+    width: 700px;
+  }
+}
+@media (max-width: 767px) {
+  .piano-wrap {
+    width: 520px;
   }
 }
 @media (max-width: 575px) {
   .piano-wrap {
-    max-width: 300px;
+    width: 300px;
+  }
+}
+@media (max-width: 991px) {
+  .piano-wrap {
+    height: 62px;
+  }
+}
+@media (max-width: 575px) {
+  .piano-wrap {
+    height: 102px;
+  }
+}
+.piano-wrap__scroll-area {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 896px;
+}
+@media (max-width: 1199px) {
+  .piano-wrap__scroll-area {
+    width: 940px;
+  }
+}
+@media (max-width: 991px) {
+  .piano-wrap__scroll-area {
+    width: 700px;
+  }
+}
+@media (max-width: 767px) {
+  .piano-wrap__scroll-area {
+    width: 865px;
+  }
+}
+@media (max-width: 575px) {
+  .piano-wrap__scroll-area {
+    width: 1500px;
   }
 }
 .piano,

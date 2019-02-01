@@ -27,3 +27,9 @@ export const Column = styled( ({className, children, mt, mb}) => {
     `
     }
 `;
+
+export const PianoLike = ({className, children}) => {
+    return (
+        <div className={`${className} piano-like`}>{children}</div>
+    )
+};

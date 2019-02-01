@@ -7,9 +7,9 @@ import styled from 'styled-components';
 class Key extends React.Component{
     render() {
         return detectTouch() ? 
-            <div className={this.props.className} onTouchStart={this.onDown} onTouchEnd={this.onUp}></div>
+            <div className={`${this.props.className} note`} onTouchStart={this.onDown} onTouchEnd={this.onUp}></div>
             : 
-            <div className={this.props.className} onMouseDown={this.onDown} onMouseUp={this.onUp}></div>
+            <div className={`${this.props.className} note`} onMouseDown={this.onDown} onMouseUp={this.onUp}></div>
     }
 
     onDown = () => {

@@ -1,17 +1,64 @@
-.piano-wrap{
+.piano-sizes(){
   display: flex;
   flex-direction: column;
-  width: 80%;
+  width: 896px;
   @media (max-width: (@xl-width - 1)) {
-    width: 100%;
+    width: 940px;
     margin-left: auto;
   }
+  @media (max-width: (@lg-width - 1)) {
+    width: 700px;
+  }
+  @media (max-width: (@md-width - 1)) {
+    width: 520px;
+  }
   @media (max-width: (@sm-width - 1)) {
-    max-width: 300px;
+    width: 300px;
   }
   
   margin-right: auto;
+}
+
+.piano-like{
+  .piano-sizes();
   margin-bottom: 20px;
+}
+
+.piano-wrap{
+  position: relative;
+  .piano-sizes();
+  height: 82px;
+  @media (max-width: (@lg-width - 1)) {
+    height: 62px;
+  }
+  @media (max-width: (@sm-width - 1)) {
+    height: 102px;
+  }
+  
+  margin-bottom: 20px;
+  overflow: hidden;
+
+  &__scroll-area{
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    width: 896px;
+    @media (max-width: (@xl-width - 1)) {
+      width: 940px;
+    }
+    @media (max-width: (@lg-width - 1)) {
+      width: 700px;
+    }
+    @media (max-width: (@md-width - 1)) {
+      width: 865px;
+    }
+    @media (max-width: (@sm-width - 1)) {
+      width: (300px * 5);
+    }
+  }
 }
 
 .piano, .piano-titles {
@@ -41,7 +88,7 @@
 
 .octave {
   height: 60px;
-  
+
   @media (max-width: (@lg-width - 1)){
     height: 40px;
   }

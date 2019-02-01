@@ -1,6 +1,5 @@
 import React from 'react';
 import levels from './levels';
-import styled from 'styled-components';
 
 const Octave = ({current, className, index}) => 
     <div className={`octave${current ? " octave--current" : ""} ${className}`}>
@@ -13,6 +12,4 @@ const Octave = ({current, className, index}) =>
         <levels.Single index={index * 12 + 11}/>
     </div>;
 
-export default styled(Octave)`
-    display: ${props => props.display ? "flex" : "none"};
-`
+export default Octave;
