@@ -18,7 +18,7 @@ class Play extends React.Component{
                 <Piano />
                 <Menu />
                 <Row className="piano-wrap">
-                    <Counter count={null}/>
+                    <Counter />
                 </Row>
             </React.Fragment>;
     }
