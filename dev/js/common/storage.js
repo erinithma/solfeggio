@@ -3,7 +3,9 @@ const NAME = "so_storage";
 function init(){
     if(!localStorage.getItem(NAME))
         localStorage.setItem(NAME, JSON.stringify({
-            common: {},
+            common: {
+                total: 10
+            },
             modes: {}
         }));
 }
@@ -11,7 +13,7 @@ function init(){
 function get(mode = null){
     init();
 
-    const json = localStorage.getItem(NAME);
+    const json = JSON.parse(localStorage.getItem(NAME));
     
     if(mode === null) {
         return json.common;

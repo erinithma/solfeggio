@@ -1,10 +1,16 @@
 import Sound from '../classes/sound';
+import storage from '../common/storage';
 
 export default class Mode {
     static sound = new Sound();
 
+    get total() {
+        return storage.get().total;
+    }
+
     events = {
-        counter: null
+        counter: null,
+        finish: null
     }
 
     keyDown(index) {

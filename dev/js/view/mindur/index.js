@@ -21,6 +21,8 @@ class MinDur extends React.Component{
     played = false;
 
     render(){
+        const {total} = this.props;
+
         return (
             <React.Fragment>
                 <Piano />
@@ -49,6 +51,17 @@ class MinDur extends React.Component{
                         </Row>
                     }
                 </div>
+                {
+                    total ?
+                    <div className="piano-wrap">
+                        <h4>Результат</h4>
+                        <div>Итого: <i>{total.total}% ({total.totalSuccess} / {total.totalCount})</i></div>
+                        <div>Минор: <i>{total.minor}% ({total.minorSuccess} / {total.minorCount})</i></div>
+                        <div>Мажор: <i>{total.major}% ({total.majorSuccess} / {total.majorCount})</i></div>
+                    </div>
+                    : ''
+                }
+                
             </React.Fragment>);
     }
 
@@ -72,7 +85,8 @@ class MinDur extends React.Component{
 export default connect(
     (state) => ({
         success: state.sound.get("result") ? state.sound.get("result").success : null,
-        counter: state.sound.get("counter")
+        counter: state.sound.get("counter"),
+        total: state.sound.get("total")
     }),
     (dispatch) => (
     { 

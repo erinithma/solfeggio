@@ -13,7 +13,9 @@ let c = {
     MODE_UPDATE: '',
     MODE_SHOW_RESULT: '',
     MODE_HIDE_RESULT: '',
-    MODE_COUNT: ''
+    MODE_COUNT: '',
+    MODE_SHOW_TOTAL: '',
+    MODE_HIDE_TOTAL: ''
 };
 
 import {build} from '../common';

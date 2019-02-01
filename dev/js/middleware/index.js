@@ -39,6 +39,8 @@ export default (store) => (next) => (action) => {
             break;
 
         case a.MODE_SELECT:
+            next({type: a.MODE_HIDE_TOTAL});
+
             sound
                 .get("mode")
                 .select(payload.select);
@@ -57,6 +59,8 @@ export default (store) => (next) => (action) => {
             break;
 
         case a.MODE_PLAY:
+            next({type: a.MODE_HIDE_TOTAL});
+
             sound
                 .get("mode")
                 .play(payload.value);
@@ -80,6 +84,16 @@ export default (store) => (next) => (action) => {
                     "counter", 
                     (count) => {
                         next({ type: a.MODE_COUNT, payload: {count} })
+                    }
+                )
+                .addListener(
+                    "finish", 
+                    (result) => {
+                        setTimeout( () => {
+                            next({ type: a.MODE_COUNT, payload: {count: 0} });
+                            next({ type: a.MODE_SHOW_TOTAL, payload: {result} }) 
+                        },
+                        300);                        
                     }
                 );
             break;

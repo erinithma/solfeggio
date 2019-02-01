@@ -1,5 +1,6 @@
 import Mode from './mode';
 import {random, map} from '../common';
+import storage from '../common/storage';
 
 export default class MinDurMode extends Mode{
     constructor(){
@@ -36,10 +37,32 @@ export default class MinDurMode extends Mode{
 
         this.fire("counter", this.counter);
 
-        if(type === this.type)
-            return this.result = true;
-        else
-            return this.result = false;
+        if(type === this.type) {
+            this.result = true;
+            if(this.type === "minor") {
+                this.minorSuccess++;
+            }
+            else {
+                this.majorSuccess++;
+            }
+        }
+        else {
+            this.result = false;
+            if(this.type === "minor") {
+                this.minorFailure++;
+            }
+            else {
+                this.majorFailure++;
+            }
+        }
+
+        if(this.counter >= this.total) {
+            this.fire("finish", this.getTotalResult());
+            this.clear();
+        }
+
+        return this.result;
+            
     }
     
     getColor(index){
@@ -58,8 +81,32 @@ export default class MinDurMode extends Mode{
         }
     }
 
+    getTotalResult(){
+        return {
+            total: Math.floor( (this.minorSuccess + this.majorSuccess) / this.total * 100 ),
+            minor: Math.floor( this.minorSuccess / (this.minorSuccess + this.minorFailure) * 100 ),
+            major: Math.floor( this.majorSuccess / (this.majorSuccess + this.majorFailure) * 100 ),
+            totalSuccess: this.minorSuccess + this.majorSuccess,
+            totalCount: this.total,
+            minorSuccess: this.minorSuccess,
+            majorSuccess: this.majorSuccess,
+            minorCount: this.minorSuccess + this.minorFailure,
+            majorCount: this.majorSuccess + this.majorFailure
+        }
+    }
+
     getCounter() {
         return counter;
+    }
+
+    clear() {
+        this.next = false;
+        this.result = null;
+        this.counter = 0;
+        this.minorSuccess = 0;
+        this.majorSuccess = 0;
+        this.minorFailure = 0;
+        this.majorFailure = 0;
     }
 
     type = "minor";
@@ -67,4 +114,8 @@ export default class MinDurMode extends Mode{
     next = false;
     result = null;
     counter = 0;
+    minorSuccess = 0;
+    majorSuccess = 0;
+    minorFailure = 0;
+    majorFailure = 0;
 }

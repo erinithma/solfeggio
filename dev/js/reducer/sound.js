@@ -7,6 +7,7 @@ import a from '../const';
 const Sound = Record({
     mode: new PlayMode(),
     result: null,
+    total: null,
     state: 'empty',
     pressedKeys: fill(),
     currentOctave: 2,
@@ -59,13 +60,20 @@ export default (sound = new Sound(), action) => {
 
         case a.SET_MODE:
             return sound
-                .set("mode", payload.mode);
+                .set("mode", payload.mode)
+                .set("total", null);
 
         case a.MODE_SHOW_RESULT:
             return sound.set("result", sound.get("mode").getResult());
         
         case a.MODE_HIDE_RESULT:
             return sound.set("result", null);
+
+        case a.MODE_SHOW_TOTAL:
+            return sound.set("total", payload.result);
+        
+        case a.MODE_HIDE_TOTAL:
+            return sound.set("total", null);
 
         case a.MODE_COUNT:
             return sound.set("counter", payload.count);
