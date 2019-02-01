@@ -5,7 +5,6 @@ export default class MinDurMode extends Mode{
     constructor(){
         super();
         this.generate();
-        this.fire("counter", 0);
     }
 
     generate() {

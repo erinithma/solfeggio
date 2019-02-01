@@ -73,6 +73,7 @@ export default (store) => (next) => (action) => {
 
         case a.SET_MODE:
             next(action);
+            next({ type: a.MODE_COUNT, payload: {count: 0} })
 
             store.getState().sound
                 .get("mode")
