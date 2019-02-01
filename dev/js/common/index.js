@@ -49,7 +49,7 @@ export function timeout(value, fnc = null){
 
     if(fnc){
         const t = setTimeout(fnc, value);
-        const index = timeout.timers.push(t);
+        const index = timeout.timers.push(t) - 1;
         return index;
     }
     else{
