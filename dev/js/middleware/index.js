@@ -11,7 +11,7 @@ export default (store) => (next) => (action) => {
         case a.LOAD_SOUND:
             if(sound.get("state") === "empty"){
                 next(action);
-                
+
                 sound
                     .get("mode")
                     .loadAll(payload.urls)
@@ -20,9 +20,6 @@ export default (store) => (next) => (action) => {
                         () => next({ ...rest, payload, type: type + a.READY })
                     )
             }
-            else{
-                next({ ...rest, payload, type: type + a.READY })
-            }            
             break;
 
         case a.KEY_DOWN:
