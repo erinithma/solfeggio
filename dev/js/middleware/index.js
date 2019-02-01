@@ -71,6 +71,19 @@ export default (store) => (next) => (action) => {
 
             break;
 
+        case a.SET_MODE:
+            next(action);
+
+            store.getState().sound
+                .get("mode")
+                .addListener(
+                    "counter", 
+                    (count) => {
+                        next({ type: a.MODE_COUNT, payload: {count} })
+                    }
+                );
+            break;
+
         default:
             return next(action)        
   }

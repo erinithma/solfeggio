@@ -11,7 +11,8 @@ const Sound = Record({
     pressedKeys: fill(),
     currentOctave: 2,
     lastTouchIndex: -1,
-    size: getSize()
+    size: getSize(),
+    counter: 0
 });
 
 export default (sound = new Sound(), action) => {
@@ -65,6 +66,9 @@ export default (sound = new Sound(), action) => {
         
         case a.MODE_HIDE_RESULT:
             return sound.set("result", null);
+
+        case a.MODE_COUNT:
+            return sound.set("counter", payload.count);
 
         default:
             return sound;

@@ -12,7 +12,8 @@ let c = {
     MODE_PLAY: '',
     MODE_UPDATE: '',
     MODE_SHOW_RESULT: '',
-    MODE_HIDE_RESULT: ''
+    MODE_HIDE_RESULT: '',
+    MODE_COUNT: ''
 };
 
 import {build} from '../common';

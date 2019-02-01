@@ -5,6 +5,7 @@ export default class MinDurMode extends Mode{
     constructor(){
         super();
         this.generate();
+        this.fire("counter", 0);
     }
 
     generate() {
@@ -32,6 +33,9 @@ export default class MinDurMode extends Mode{
 
     select(type){
         this.next = true;
+        this.counter++;
+
+        this.fire("counter", this.counter);
 
         if(type === this.type)
             return this.result = true;
@@ -55,9 +59,13 @@ export default class MinDurMode extends Mode{
         }
     }
 
+    getCounter() {
+        return counter;
+    }
+
     type = "minor";
     accord = [];
     next = false;
     result = null;
-
+    counter = 0;
 }
