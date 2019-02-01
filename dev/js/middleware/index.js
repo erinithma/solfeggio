@@ -1,8 +1,7 @@
 import a from '../const'
-import {fill, getSize} from '../common';
+import {fill, getSize, timeout} from '../common';
 
 let resultTimeout = null, offsetTimeout = null;
-let backOffset = 0;
 
 export default (store) => (next) => (action) => {
     const { type, payload, ...rest } = action;
@@ -46,20 +45,14 @@ export default (store) => (next) => (action) => {
                 .get("mode")
                 .select(payload.select);
 
-            if(resultTimeout !== null){
-                clearTimeout(resultTimeout);
-                resultTimeout = null;
-            }          
-            if(offsetTimeout !== null){
-                clearTimeout(offsetTimeout);
-                offsetTimeout = null;
-            }      
+            timeout(resultTimeout);
+            timeout(offsetTimeout); 
 
             next({type: a.MODE_SHOW_RESULT});
 
-            resultTimeout = setTimeout(() => {
+            resultTimeout = timeout(2500, () => {
                 next({type: a.MODE_HIDE_RESULT});
-            }, 2500);
+            });
 
             break;
 
@@ -70,14 +63,8 @@ export default (store) => (next) => (action) => {
                 .get("mode")
                 .play(payload.value);
 
-            if(resultTimeout !== null){
-                clearTimeout(resultTimeout);
-                resultTimeout = null;
-            } 
-            if(offsetTimeout !== null){
-                clearTimeout(offsetTimeout);
-                offsetTimeout = null;
-            } 
+            timeout(resultTimeout);
+            timeout(offsetTimeout);
 
             next({type: a.MODE_HIDE_RESULT});
 
@@ -110,15 +97,17 @@ export default (store) => (next) => (action) => {
                     "offset", 
                     (value) => {
                         next({ type: a.SCROLL_TEMP, payload: {value} });  
-                        if(!offsetTimeout){
-                            clearTimeout(offsetTimeout);
-                            offsetTimeout = 0;
-                        }
-                        offsetTimeout = setTimeout( () => {
+                        timeout(offsetTimeout);
+                        offsetTimeout = timeout(2500, () => {
                             next({ type: a.CLEAR_SCROLL });  
-                        }, 2500);               
+                        });
                     }
                 );
+            break;
+        
+        case a.SET_SIZE:
+            next({ type: a.CLEAR_SCROLL });
+            next(action);
             break;
 
         default:

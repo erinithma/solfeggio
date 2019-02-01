@@ -31,29 +31,6 @@ function getOffset(index) {
 function setOffset(sound, index) {
     return sound.set("offset", getOffset(index));            
 }
-/*
-function scrollToNote(index) {
-    var value = 0;
-
-    switch(getSize()){
-        case 'sm':
-            if(index >= 60 - 12 - 1)
-                value = -300 * 4;
-            value = index * (-300 / 12) + (300 / 2);  
-            break;          
-        case 'md':
-            if(index >= 60 - 12 * 3 - 1)
-                value = -173 * 2;
-            else
-                value = -173 / 12;
-            break; 
-        default:
-            value = 0;
-            break; 
-    }
-
-    return value >= 0 ? 0 : value;      
-}*/
 
 export default (sound = new Sound(), action) => {
     const {type, payload} = action;

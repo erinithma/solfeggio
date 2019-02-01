@@ -76,4 +76,11 @@ export default styled(ConnectedMenu)`
         justify-content: center;
         align-items: center;
     }
+    @media (max-width: ${mdWidth-1}px){
+        top: 180px;
+    }
+    @media (max-width: ${smWidth-1}px){
+        top: 220px;
+        right: 20px;
+    }
 `;

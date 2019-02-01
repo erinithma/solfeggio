@@ -43,3 +43,19 @@ export function build(obj) {
 
     return obj;
 }
+
+export function timeout(value, fnc = null){
+    timeout.timers = timeout.timers || [];
+
+    if(fnc){
+        const t = setTimeout(fnc, value);
+        const index = timeout.timers.push(t);
+        return index;
+    }
+    else{
+        if(value !== null && timeout.timers[value]){
+            clearTimeout(timeout.timers[value]);
+            timeout.timers[value] = null;
+        }
+    }
+}
