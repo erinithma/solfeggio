@@ -83,7 +83,7 @@ const WhiteKey = styled(Key)`
     cursor: pointer;
     border-radius: 0 0 2px 2px;
 
-    background-color: whites.0;
+    background-color: ${props => `${props.theme.colors.whites[0]}`};
     border-bottom: 1px solid black;
     border-left: 1px solid #777;
     border-right: 1px solid black;
