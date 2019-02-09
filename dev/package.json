@@ -4,7 +4,8 @@
   "description": "",
   "main": "webpack.config.js",
   "scripts": {
-    "start": "webpack --mode=production"
+    "start": "webpack --mode=production",
+    "dev": "webpack --mode=development --watch"
   },
   "author": "",
   "license": "ISC",

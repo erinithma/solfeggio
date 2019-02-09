@@ -48,7 +48,8 @@ const BlackKey = styled(Key)`
     cursor: pointer;
     border-radius: 0 0 2px 2px;
 
-    background-color: #777;
+    ${props => `background-color: ${props.theme.colors.blacks[0]};`}
+
     border-bottom: 1px solid black;
     border-left: 1px solid black;
     border-right: 1px solid black;
@@ -61,12 +62,12 @@ const BlackKey = styled(Key)`
     height: 65%;
   
     &:hover {
-        background-color: #666;
+        ${props => `background-color: ${props.theme.colors.blacks[1]};`}
     }
   
     ${props => 
-        props.color === 'red' ? `background-color: #C00;` : 
-        props.color === 'green' ? `background-color: #0C0;` : ''
+        props.color === 'red' ? `background-color: ${props.theme.colors['danger-dark']} !important;` : 
+        props.color === 'green' ? `background-color: ${props.theme.colors['success-dark']} !important;` : ''
     }
 
     ${props => 
@@ -82,7 +83,7 @@ const WhiteKey = styled(Key)`
     cursor: pointer;
     border-radius: 0 0 2px 2px;
 
-    background-color: white;
+    background-color: whites.0;
     border-bottom: 1px solid black;
     border-left: 1px solid #777;
     border-right: 1px solid black;
@@ -91,12 +92,12 @@ const WhiteKey = styled(Key)`
     width: 100%;
 
     &:hover {
-        background-color: #eee;
+        ${props => `background-color: ${props.theme.colors.whites[1]};`}
     }
 
     ${props => 
-        props.color === 'red' ? `background-color: #F00;` : 
-        props.color === 'green' ? `background-color: #0C3` : ''
+        props.color === 'red' ? `background-color: ${props.theme.colors['danger']} !important;` : 
+        props.color === 'green' ? `background-color: ${props.theme.colors['success']} !important;` : ''
     }
 
     ${props => 
