@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import a from '../../const';
 import $ from 'jquery';
 import { map } from '../../common';
-import {PianoLike} from '../../components/common';
+import {PianoLike, Button, Column} from '../../components/common';
 
 const workPlace = {
 	ids : {
@@ -131,8 +131,8 @@ class Piano extends React.Component{
                     </div>   
                 </div>
                 <PianoLike className="piano-controls">
-                    <button id="leftOctave" className="button" onClick={this.prevOctave}>←</button>
-                    <button id="rightOctave" className="button" style={{marginLeft: "auto"}} onClick={this.nextOctave}>→</button>
+                    <Button id="leftOctave" onClick={this.prevOctave}>←</Button>
+                    <Button id="rightOctave" ml="auto" onClick={this.nextOctave}>→</Button>
                 </PianoLike> 
             </React.Fragment>
         );

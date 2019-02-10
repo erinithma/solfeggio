@@ -1,20 +1,35 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export const Row = styled( ({className, children, mt, mb}) => {
+const transformSize = (size) => {
+    switch(typeof size){
+        case 'undefined':
+            return 0;
+        case 'string':
+            return size;
+        case 'number':
+            return size + "px"
+        default:
+            return 0;
+    }
+}
+
+export const Row = styled( ({className, children}) => {
     return (
         <div className={className}>{children}</div>
     )
 })`
     display: flex;
     ${props => `
-        margin-top: ${props.mt || 0}px;
-        margin-bottom: ${props.mb || 0}px;
+        margin-top: ${transformSize(props.mt)};
+        margin-bottom: ${transformSize(props.mb)};
+        margin-left: ${transformSize(props.ml)};
+        margin-right: ${transformSize(props.mr)};
     `
     }
 `;
 
-export const Column = styled( ({className, children, mt, mb}) => {
+export const Column = styled( ({className, children}) => {
     return (
         <div className={className}>{children}</div>
     )
@@ -22,8 +37,10 @@ export const Column = styled( ({className, children, mt, mb}) => {
     display: flex;
     flex-direction: column;
     ${props => `
-        margin-top: ${props.mt || 0}px;
-        margin-bottom: ${props.mb || 0}px;
+        margin-top: ${transformSize(props.mt)};
+        margin-bottom: ${transformSize(props.mb)};
+        margin-left: ${transformSize(props.ml)};
+        margin-right: ${transformSize(props.mr)};
     `
     }
 `;
@@ -33,3 +50,24 @@ export const PianoLike = ({className, children}) => {
         <div className={`${className} piano-like`}>{children}</div>
     )
 };
+
+export const Button = styled(({className, children, id, onClick = () => {}, type = 'default', primary, success, danger}) => {
+    const map = {
+        primary: 'button--primary',
+        success: 'button--success',
+        danger: 'button--danger'
+    }
+    const typeClass = map[type] || (primary ? map['primary'] : success ? map['success'] : danger ? map['danger'] : '');
+
+    return (
+        <button id={id} className={`button ${typeClass} ${className}`} onClick={onClick}>{children}</button>
+    )
+})`
+    ${props => `
+        margin-top: ${transformSize(props.mt)};
+        margin-bottom: ${transformSize(props.mb)};
+        margin-left: ${transformSize(props.ml)};
+        margin-right: ${transformSize(props.mr)};
+    `
+    }
+`;
