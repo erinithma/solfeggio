@@ -44,7 +44,7 @@ export const Column = styled( ({className, children}) => {
 
 export const PianoLike = ({className, children}) => {
     return (
-        <div className={`${className} piano-like`}>{children}</div>
+        <div className={`piano-like ${className}`}>{children}</div>
     )
 };
 
