@@ -116,11 +116,11 @@ class Piano extends React.Component{
         return (
             <React.Fragment>
                 <div className="piano-wrap">
-                    <div className="piano-wrap__scroll-area" style={{left: (this.props.tempOffset !== null ? this.props.tempOffset : this.props.offset) + "px"}}>
+                    <div className="piano-wrap__scroll-area" style={{left: this.props.tempOffset !== null ? this.props.tempOffset : this.props.offset}}>
                         <div className="piano-titles">
                             {
-                                ['большая октава', 'малая октава', 'первая октава', 'вторая октава' , 'третья октава'].map( (v, i) => 
-                                    <div key={i} className="octave-title">{v}</div> )
+                                ['большая', 'малая', 'первая', 'вторая' , 'третья'].map( (v, i) => 
+                                    <div key={i} className="octave-title">{v} октава</div> )
                             }
                         </div>
                         <div className="piano">
