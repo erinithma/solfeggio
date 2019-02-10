@@ -8,10 +8,19 @@ const transformSize = (size) => {
         case 'string':
             return size;
         case 'number':
-            return size + "px"
+            return `${size}px`;
         default:
             return 0;
     }
+}
+
+const getMargin = (props) => {
+    return `
+        margin-top: ${transformSize(props.mt)};
+        margin-bottom: ${transformSize(props.mb)};
+        margin-left: ${transformSize(props.ml)};
+        margin-right: ${transformSize(props.mr)};
+    `;
 }
 
 export const Row = styled( ({className, children}) => {
@@ -20,13 +29,7 @@ export const Row = styled( ({className, children}) => {
     )
 })`
     display: flex;
-    ${props => `
-        margin-top: ${transformSize(props.mt)};
-        margin-bottom: ${transformSize(props.mb)};
-        margin-left: ${transformSize(props.ml)};
-        margin-right: ${transformSize(props.mr)};
-    `
-    }
+    ${props => getMargin(props)}
 `;
 
 export const Column = styled( ({className, children}) => {
@@ -36,13 +39,7 @@ export const Column = styled( ({className, children}) => {
 })`
     display: flex;
     flex-direction: column;
-    ${props => `
-        margin-top: ${transformSize(props.mt)};
-        margin-bottom: ${transformSize(props.mb)};
-        margin-left: ${transformSize(props.ml)};
-        margin-right: ${transformSize(props.mr)};
-    `
-    }
+    ${props => getMargin(props)}
 `;
 
 export const PianoLike = ({className, children}) => {
@@ -63,11 +60,5 @@ export const Button = styled(({className, children, id, onClick = () => {}, type
         <button id={id} className={`button ${typeClass} ${className}`} onClick={onClick}>{children}</button>
     )
 })`
-    ${props => `
-        margin-top: ${transformSize(props.mt)};
-        margin-bottom: ${transformSize(props.mb)};
-        margin-left: ${transformSize(props.ml)};
-        margin-right: ${transformSize(props.mr)};
-    `
-    }
+    ${props => getMargin(props)}
 `;
