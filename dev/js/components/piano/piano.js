@@ -82,12 +82,13 @@ class Piano extends React.Component{
     }
 
     display = (i) => {
+        const {size, currentOctave} = this.props;
 
-        if(this.props.size === "sm"){
-            return i === this.props.currentOctave;
+        if(size === "sm"){
+            return i === currentOctave;
         }
-        else if(this.props.size === "md"){
-            let c = this.props.currentOctave;
+        else if(size === "md"){
+            let c = currentOctave;
 
             if(c > 0 && c < 4){
                 return i >= c - 1 && i <= c + 1;
@@ -113,10 +114,12 @@ class Piano extends React.Component{
     }
 
     render(){
+        const {tempOffset, offset, currentOctave} = this.props;
+
         return (
             <React.Fragment>
                 <div className="piano-wrap">
-                    <div className="piano-wrap__scroll-area" style={{left: this.props.tempOffset !== null ? this.props.tempOffset : this.props.offset}}>
+                    <div className="piano-wrap__scroll-area" style={{left: tempOffset !== null ? tempOffset : offset}}>
                         <div className="piano-titles">
                             {
                                 ['большая', 'малая', 'первая', 'вторая' , 'третья'].map( (v, i) => 
@@ -125,14 +128,14 @@ class Piano extends React.Component{
                         </div>
                         <div className="piano">
                             {
-                                map(i => <Octave current={this.props.currentOctave === i} key={i} index={i} />, 5)
+                                map(i => <Octave current={currentOctave === i} key={i} index={i} />, 5)
                             }
                         </div>
                     </div>   
                 </div>
                 <PianoLike className="piano-controls">
-                    <Button id="leftOctave" onClick={this.prevOctave}>←</Button>
-                    <Button id="rightOctave" ml="auto" onClick={this.nextOctave}>→</Button>
+                    <Button onClick={this.prevOctave}>←</Button>
+                    <Button ml="auto" onClick={this.nextOctave}>→</Button>
                 </PianoLike> 
             </React.Fragment>
         );
