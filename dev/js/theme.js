@@ -1,21 +1,18 @@
 export default  {
-    breakpoints: [576, 768, 992, 1200],
-    colors: {
-        black: '#000',
-        white: '#fff',
-        transparent: 'transparent',
-        shadow: 'rgba(0, 0, 0, 0.3)',
-        primary: '#06F',
-        'primary-dark': '#06C',
-        success: '#0C3',
-        'success-dark': '#0C0',
-        danger: '#F00',
-        'danger-dark': '#C00',
-        warning: '#FC6',
-        'warning-dark': '#FC3',
-        default: '#FFF',
-        'default-dark': '#CCC',
-        whites: ['fff', '#eee'],
-        blacks: ['#777', '#666']
-    }
+    black: '#000',
+    white: '#fff',
+    transparent: 'transparent',
+    shadow: 'rgba(0, 0, 0, 0.3)',
+    primary: '#06F',
+    primaryDark: '#06C',
+    success: '#0C3',
+    successDark: '#0C0',
+    danger: '#F00',
+    dangerDark: '#C00',
+    warning: '#FC6',
+    warningDark: '#FC3',
+    default: '#FFF',
+    defaultDark: '#CCC',
+    whites: ['fff', '#eee', '#cfcfcf'],
+    blacks: ['#777', '#666', '#5f5f5f']
 };

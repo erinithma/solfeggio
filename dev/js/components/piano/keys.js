@@ -48,7 +48,7 @@ const BlackKey = styled(Key)`
     cursor: pointer;
     border-radius: 0 0 2px 2px;
 
-    ${props => `background-color: ${props.theme.colors.blacks[0]};`}
+    ${props => `background-color: ${props.theme.blacks[0]};`}
 
     border-bottom: 1px solid black;
     border-left: 1px solid black;
@@ -62,18 +62,18 @@ const BlackKey = styled(Key)`
     height: 65%;
   
     &:hover {
-        ${props => `background-color: ${props.theme.colors.blacks[1]};`}
+        ${props => `background-color: ${props.theme.blacks[1]};`}
     }
   
     ${props => 
-        props.color === 'red' ? `background-color: ${props.theme.colors['danger-dark']} !important;` : 
-        props.color === 'green' ? `background-color: ${props.theme.colors['success-dark']} !important;` : ''
+        props.color === 'red' ? `background-color: ${props.theme.dangerDark} !important;` : 
+        props.color === 'green' ? `background-color: ${props.theme.successDark} !important;` : ''
     }
 
     ${props => 
         props.pressed ? `
             height: 63%;
-            background: linear-gradient(to bottom, #777, #5f5f5f); 
+            background: linear-gradient(to bottom, ${props.theme.blacks[0]}, ${props.theme.blacks[2]}); 
         ` : ''
     }
 `;
@@ -83,7 +83,7 @@ const WhiteKey = styled(Key)`
     cursor: pointer;
     border-radius: 0 0 2px 2px;
 
-    background-color: ${props => `${props.theme.colors.whites[0]}`};
+    background-color: ${props => `${props.theme.whites[0]}`};
     border-bottom: 1px solid black;
     border-left: 1px solid #777;
     border-right: 1px solid black;
@@ -92,19 +92,19 @@ const WhiteKey = styled(Key)`
     width: 100%;
 
     &:hover {
-        ${props => `background-color: ${props.theme.colors.whites[1]};`}
+        ${props => `background-color: ${props.theme.whites[1]};`}
     }
 
     ${props => 
-        props.color === 'red' ? `background-color: ${props.theme.colors['danger']} !important;` : 
-        props.color === 'green' ? `background-color: ${props.theme.colors['success']} !important;` : ''
+        props.color === 'red' ? `background-color: ${props.theme.danger} !important;` : 
+        props.color === 'green' ? `background-color: ${props.theme.success} !important;` : ''
     }
 
     ${props => 
         props.pressed ? `
             height: 98%;
             box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.6);
-            background: linear-gradient(to bottom, #fff, #cfcfcf); 
+            background: linear-gradient(to bottom, ${props.theme.whites[0]}, ${props.theme.whites[2]}); 
         ` : ''
     }
 `;
