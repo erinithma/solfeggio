@@ -15,6 +15,6 @@ export default  {
     defaultDark: '#CCC',
     yellow: '#FFCC33',
     yellowDark: '#CC9900',
-    whites: ['fff', '#eee', '#cfcfcf'],
+    whites: ['#fff', '#eee', '#cfcfcf'],
     blacks: ['#777', '#666', '#5f5f5f']
 };
