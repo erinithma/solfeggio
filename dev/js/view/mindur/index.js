@@ -40,7 +40,7 @@ class MinDur extends React.Component{
                             <Row>
                                 {
                                     this.state.guess ? 
-                                    <Button onClick={() => this.play()}><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg> Повторить</Button>
+                                    <Button onClick={this.play}><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg> Повторить</Button>
                                     :
                                     <Button onClick={this.play}><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg> {this.selectValue !== null ? 'Дальше' : 'Играть'}</Button>
                                 }

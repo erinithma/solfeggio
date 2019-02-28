@@ -3,8 +3,6 @@ import styled from 'styled-components';
 
 const transformSize = (size) => {
     switch(typeof size){
-        case 'undefined':
-            return 0;
         case 'string':
             return size;
         case 'number':

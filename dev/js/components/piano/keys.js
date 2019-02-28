@@ -6,10 +6,12 @@ import styled from 'styled-components';
 
 class Key extends React.Component{
     render() {
+        const {className, children, child} = this.props;
+
         return detectTouch() ? 
-            <div className={`${this.props.className} note`} onTouchStart={this.onDown} onTouchEnd={this.onUp}></div>
+            <div className={`${className} note`} onTouchStart={this.onDown} onTouchEnd={this.onUp}>{child}{children}</div>
             : 
-            <div className={`${this.props.className} note`} onMouseDown={this.onDown} onMouseUp={this.onUp}></div>
+            <div className={`${className} note`} onMouseDown={this.onDown} onMouseUp={this.onUp}>{child}{children}</div>
     }
 
     onDown = () => {
@@ -27,7 +29,8 @@ function connectWith(component){
         {
             pressed: state.sound.get("pressedKeys")[ownProps.index],
             lastTouchIndex: state.sound.get("lastTouchIndex"),
-            color: state.sound.get("result") ? state.sound.get("result").colors[ownProps.index] : null
+            color: state.sound.get("result") ? state.sound.get("result").colors[ownProps.index] : null,
+            child: state.sound.get("result") && state.sound.get("result").children ? state.sound.get("result").children[ownProps.index] : null,
         }),
         (dispatch) => (
         { 
@@ -67,7 +70,8 @@ const BlackKey = styled(Key)`
   
     ${props => 
         props.color === 'red' ? `background-color: ${props.theme.dangerDark} !important;` : 
-        props.color === 'green' ? `background-color: ${props.theme.successDark} !important;` : ''
+        props.color === 'green' ? `background-color: ${props.theme.successDark} !important;` :
+        props.color === 'yellow' ? `background-color: ${props.theme.yellowDark} !important;` : ''
     }
 
     ${props => 
@@ -97,7 +101,8 @@ const WhiteKey = styled(Key)`
 
     ${props => 
         props.color === 'red' ? `background-color: ${props.theme.danger} !important;` : 
-        props.color === 'green' ? `background-color: ${props.theme.success} !important;` : ''
+        props.color === 'green' ? `background-color: ${props.theme.success} !important;` :
+        props.color === 'yellow' ? `background-color: ${props.theme.yellow} !important;` : ''
     }
 
     ${props => 

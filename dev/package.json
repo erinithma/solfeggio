@@ -4,8 +4,8 @@
   "description": "",
   "main": "webpack.config.js",
   "scripts": {
-    "start": "webpack --mode=production",
-    "dev": "webpack --mode=development --watch"
+    "build": "webpack --mode=production",
+    "start": "webpack --mode=development --watch"
   },
   "author": "",
   "license": "ISC",
@@ -33,6 +33,7 @@
   },
   "dependencies": {
     "connected-react-router": "^5.0.1",
+    "dotenv-webpack": "^1.7.0",
     "history": "^4.7.2",
     "immutable": "^4.0.0-rc.12",
     "jquery": "^3.3.1",

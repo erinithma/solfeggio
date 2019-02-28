@@ -3,6 +3,7 @@ const   webpack = require('webpack'),
         CopyWebpackPlugin = require('copy-webpack-plugin'),
         ExtractTextPlugin = require('extract-text-webpack-plugin'),
         autoprefixer = require('autoprefixer');
+        Env = require('dotenv-webpack');
 
 module.exports = {
     target: 'web',
@@ -65,9 +66,7 @@ module.exports = {
         ]
     },
     plugins: [
-        new webpack.DefinePlugin({
-            __mode: JSON.stringify(process.env.NODE_ENV)
-        }),
+        new Env(),
         new webpack.HotModuleReplacementPlugin(),
         new ExtractTextPlugin({ filename: 'css/[name].css', disable: false, allChunks: true }),
         new CopyWebpackPlugin([
