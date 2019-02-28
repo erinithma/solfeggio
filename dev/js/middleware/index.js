@@ -19,6 +19,10 @@ export default (store) => (next) => (action) => {
                         "loaded", 
                         () => next({ ...rest, payload, type: type + a.READY })
                     )
+                    .addListener(
+                        "progress", 
+                        (percents, count) => next({ ...rest, payload: {percents, count}, type: a.PROGRESS })
+                    )
             }
             break;
 

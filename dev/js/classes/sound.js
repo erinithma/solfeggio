@@ -40,7 +40,7 @@ export default class Sound {
 
                     this.buffer[index] = buffer;
 
-                    this.fire("progress", Math.floor(this.loaded / len * 100));
+                    this.fire("progress", Math.floor(this.loaded / len * 100), this.loaded);
 
                     if(this.loaded === len) {
                         this.fire("loaded");

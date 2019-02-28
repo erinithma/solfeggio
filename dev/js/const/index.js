@@ -17,7 +17,8 @@ let c = {
     MODE_SHOW_TOTAL: '',
     MODE_HIDE_TOTAL: '',
     SCROLL_TEMP: '',
-    CLEAR_SCROLL: ''
+    CLEAR_SCROLL: '',
+    PROGRESS: ''
 };
 
 import {build} from '../common';

@@ -3,15 +3,31 @@ import { connect } from 'react-redux';
 import a from '../../const';
 import {detectTouch} from '../../common';
 import styled from 'styled-components';
+import { ClipLoader as Loader } from 'react-spinners';
+
+const Spinner = styled(({className}) => {
+    return <div className={className}><Loader
+        sizeUnit={"px"}
+        size={12}
+        color={'#ccc'}
+        loading={true}
+    /></div>
+})`
+    display: flex;
+    bottom: 4px;
+    overflow: hidden;
+    position: absolute;
+`;
 
 class Key extends React.Component{
     render() {
-        const {className, children, child} = this.props;
+        const {className, children, child, index, loaded} = this.props;
+        const spinner = loaded <= index ? <Spinner /> : null;
 
         return detectTouch() ? 
-            <div className={`${className} note`} onTouchStart={this.onDown} onTouchEnd={this.onUp}>{child}{children}</div>
+            <div className={`${className} note`} onTouchStart={this.onDown} onTouchEnd={this.onUp}>{child}{children}{spinner}</div>
             : 
-            <div className={`${className} note`} onMouseDown={this.onDown} onMouseUp={this.onUp}>{child}{children}</div>
+            <div className={`${className} note`} onMouseDown={this.onDown} onMouseUp={this.onUp}>{child}{children}{spinner}</div>
     }
 
     onDown = () => {
@@ -29,6 +45,7 @@ function connectWith(component){
         {
             pressed: state.sound.get("pressedKeys")[ownProps.index],
             lastTouchIndex: state.sound.get("lastTouchIndex"),
+            loaded: state.sound.get("loaded"),
             color: state.sound.get("result") ? state.sound.get("result").colors[ownProps.index] : null,
             child: state.sound.get("result") && state.sound.get("result").children ? state.sound.get("result").children[ownProps.index] : null,
         }),
@@ -50,6 +67,10 @@ const BlackKey = styled(Key)`
 
     cursor: pointer;
     border-radius: 0 0 2px 2px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
 
     ${props => `background-color: ${props.theme.blacks[0]};`}
 
@@ -86,6 +107,10 @@ const WhiteKey = styled(Key)`
 
     cursor: pointer;
     border-radius: 0 0 2px 2px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
 
     background-color: ${props => `${props.theme.whites[0]}`};
     border-bottom: 1px solid black;

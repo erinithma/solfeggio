@@ -14,7 +14,8 @@ const Sound = Record({
     size: getSize(),
     counter: 0,
     offset: getOffset(2),
-    tempOffset: null
+    tempOffset: null,
+    loaded: 0
 });
 
 function getOffset(index) {
@@ -37,6 +38,9 @@ export default (sound = new Sound(), action) => {
     const currentOctave = sound.get("currentOctave");
 
     switch(type){
+        case a.PROGRESS:
+            console.log(payload.count)
+            return sound.set("loaded", payload.count);
         case a.LOAD_SOUND:
             return sound.set("state", "loading");
 
