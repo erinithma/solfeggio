@@ -361,11 +361,14 @@ h3 {
 .primary-items section p {
   margin-top: auto;
 }
-.primary-items section a {
+.primary-items section h2 + a {
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
   margin-top: auto;
+  -ms-flex-item-align: center;
+      align-self: center;
+  text-align: center;
 }
 .menu {
   display: none;

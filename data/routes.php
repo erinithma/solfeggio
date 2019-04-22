@@ -19,5 +19,9 @@
         [
             "path" => "/обучение/",
             "controller" => "EducationController"
+        ],
+        [
+            "path" => "/тренажер/настройки",
+            "controller" => "CommonSettingsController"
         ]
     ];

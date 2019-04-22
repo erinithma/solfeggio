@@ -14,10 +14,10 @@ const transformSize = (size) => {
 
 const getMargin = (props) => {
     return `
-        margin-top: ${transformSize(props.mt)};
-        margin-bottom: ${transformSize(props.mb)};
-        margin-left: ${transformSize(props.ml)};
-        margin-right: ${transformSize(props.mr)};
+        margin-top: ${transformSize(props.mt)} !important;
+        margin-bottom: ${transformSize(props.mb)} !important;
+        margin-left: ${transformSize(props.ml)} !important;
+        margin-right: ${transformSize(props.mr)} !important;
     `;
 }
 

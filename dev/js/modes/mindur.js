@@ -126,7 +126,7 @@ export default class MinDurMode extends Mode{
     }
 
     getCounter() {
-        return counter;
+        return this.counter;
     }
 
     clear() {

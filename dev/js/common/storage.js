@@ -4,7 +4,7 @@ function init(){
     if(!localStorage.getItem(NAME))
         localStorage.setItem(NAME, JSON.stringify({
             common: {
-                total: +localStorage.getItem('limit') || 10
+                total: 10
             },
             modes: {}
         }));
@@ -31,10 +31,11 @@ function set(data, mode = null) {
 
     if(mode === null) {
         let json = get();
-        json = Object.assign(json, data);
+        json = Object.assign({}, json, data);
         allData.common = json;
 
         localStorage.setItem(NAME, JSON.stringify(allData));
+        return;
     }
     else if(typeof mode === "string"){
         let json = get(mode) || {};
@@ -42,6 +43,7 @@ function set(data, mode = null) {
         allData.modes[mode] = json;
 
         localStorage.setItem(NAME, JSON.stringify(allData));
+        return;
     }
     throw "invalid argument 'mode'";
 }
