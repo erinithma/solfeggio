@@ -48,10 +48,16 @@
 .primary-items{
     display: flex;
     flex-wrap: wrap;
+    margin-left: -8px;
+    margin-right: -8px;
 
     section{
-        flex-basis: 50%;
-        padding: 10px;
+        flex-basis: calc(33.33% - 16px);
+        padding: 22px;
+        border: 1px solid #afafaf;
+        margin: 8px;
+        background: #f7f7f7;
+        border-radius: 12px;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
